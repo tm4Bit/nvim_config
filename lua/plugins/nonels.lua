@@ -37,7 +37,7 @@ function M.config()
         end,
       },
 
-      -- diagnostics.luacheck,
+      -- diagnostics.selene,
       formatting.stylua,
       formatting.gofumpt,
       formatting.goimports,

@@ -5,37 +5,12 @@ local M = {
 
 M.opts = {
   signs = {
-    add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = {
-      hl = "GitSignsChange",
-      text = "~",
-      numhl = "GitSignsChangeNr",
-      linehl = "GitSignsChangeLn",
-    },
-    delete = {
-      hl = "GitSignsDelete",
-      text = "-",
-      numhl = "GitSignsDeleteNr",
-      linehl = "GitSignsDeleteLn",
-    },
-    topdelete = {
-      hl = "GitSignsDelete",
-      text = "-",
-      numhl = "GitSignsDeleteNr",
-      linehl = "GitSignsDeleteLn",
-    },
-    changedelete = {
-      hl = "GitSignsChange",
-      text = "~-",
-      numhl = "GitSignsChangeNr",
-      linehl = "GitSignsChangeLn",
-    },
-    untracked = {
-      hl = "GitSignsAdd",
-      text = "#",
-      numhl = "GitSignsAddNr",
-      linehl = "GitSignsAddLn",
-    },
+    add = { text = "+" },
+    change = { text = "~" },
+    delete = { text = "-" },
+    topdelete = { text = "-" },
+    changedelete = { text = "~-" },
+    untracked = { text = "#" },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -68,7 +43,7 @@ M.opts = {
 }
 
 M.config = function(_, opts)
-	require("gitsigns").setup(opts)
+  require("gitsigns").setup(opts)
 
   local function map(mode, lhs, rhs, keymap_opt)
     opts = vim.tbl_extend("force", { noremap = true, silent = true }, keymap_opt or {})
@@ -76,7 +51,7 @@ M.config = function(_, opts)
   end
 
   -- Navigation
-  map("n", "]g", "<cmd>Gitsigns next_hunk<CR><cr>", { desc = "Next hunk"})
+  map("n", "]g", "<cmd>Gitsigns next_hunk<CR><cr>", { desc = "Next hunk" })
   map("n", "[g", "<cmd>Gitsigns prev_hunk<CR><cr>", { desc = "Previous hunk" })
 
   -- Actions

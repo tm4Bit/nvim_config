@@ -169,6 +169,11 @@ local icons = {
 	Watches = "󰂥",
 }
 
+--- Function to retreive the icon with necessary padding
+---@param kind string The name of the icon
+---@param padding? integer The amount of right padding  
+---@param fallback? string The icon fallback if no match kind is find
+---@return string # The icon  
 M.get_icon = function(kind, padding, fallback)
 	local icon = icons[kind]
 	if icon then

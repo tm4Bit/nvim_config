@@ -23,25 +23,24 @@ local M = {
 }
 
 function M.config()
-	-- cmp 
+  -- cmp
   local cmp_status_ok, cmp = pcall(require, "cmp")
   if not cmp_status_ok then
     return
   end
 
-	-- lspkind
+  -- lspkind
   local lspkind_status_ok, lspkind = pcall(require, "lspkind")
-	if not lspkind_status_ok then
-		return
-	end
+  if not lspkind_status_ok then
+    return
+  end
 
-	-- LuaSnip config
-	local luasnip = require("utils.cmp.snippets").execute()
-	if not luasnip then
-		return
-	end
-	local cmp_utils = require("utils.cmp.utils")
-
+  -- LuaSnip config
+  local luasnip = require("utils.cmp.snippets").execute()
+  if not luasnip then
+    return
+  end
+  local cmp_utils = require "utils.cmp.utils"
 
   local check_backspace = cmp_utils.check_backspace
   local border_opts = cmp_utils.border_opts
@@ -111,11 +110,11 @@ function M.config()
       select = false,
     },
     window = {
-      completion = cmp.config.window.bordered(border_opts),
-      documentation = cmp.config.window.bordered(border_opts),
+      completion = cmp.config.window.bordered(border_opts), -- Pass boarder_opts as args
+      documentation = cmp.config.window.bordered(border_opts), -- Pass boarder_opts as args
     },
     experimental = {
-      ghost_text = true,
+      ghost_text = false,
     },
   }
 end

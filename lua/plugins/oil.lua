@@ -5,7 +5,7 @@ local M = {
 		{
 			"<leader>e",
 			"<cmd>Oil<cr>",
-			desc = "Toogle Oil",
+			desc = "Open Oil",
 		},
 	},
 }

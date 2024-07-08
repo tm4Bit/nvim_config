@@ -1,7 +1,6 @@
 local M = {
   "nvim-tree/nvim-web-devicons",
   event = "VeryLazy",
-  commit = "e283ab937e0197b37ec5d8013e49495193407324",
 }
 
 function M.config()
@@ -82,7 +81,7 @@ function M.config()
         name = "Java_bytecode",
       },
       ["js"] = {
-        icon = get_icon("Javascript", 1),
+        icon = get_icon "Javascript",
         color = "#F0DB4F",
         name = "Javascript",
       },

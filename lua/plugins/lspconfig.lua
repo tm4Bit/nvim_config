@@ -42,18 +42,23 @@ function M.config()
       opts = vim.tbl_deep_extend("force", conf_opts, opts)
     end
 
-		-- Jump angularls config
+    -- Jump angularls config
     if server == "angularls" then
       goto continue
     end
 
+    -- Jump clang config
+    if server == "clangd" then
+      goto continue
+    end
+
     lspconfig[server].setup(opts)
-		::continue::
+    ::continue::
   end
 
   -- Attach Angular LSP
-  local ngLib = "/home/tma/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server/"
-  local tsLib = "/home/tma/.local/share/nvim/mason/packages/angular-language-server/node_modules/typescript/"
+  local tsLib = "/home/tma/.local/share/nvim/mason/packages/angular-language-server/node_modules"
+	local ngLib = "/home/tma/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server/node_modules"
   local cmd = {"ngserver", "--stdio", "--tsProbeLocations", tsLib , "--ngProbeLocations", ngLib}
 
   require("lspconfig").angularls.setup {
@@ -61,9 +66,20 @@ function M.config()
     capabilities = capabilities,
     cmd = cmd,
     on_new_config = function(new_config,new_root_dir)
-      new_config.cmd = cmd
+			-- new_config.cmd = cmd
+      new_config.cmd = {
+				"ngserver",
+				"--stdio",
+				"--tsProbeLocations",
+				-- tsLib .. "," .. new_root_dir .. "/node_modules",
+				tsLib .. "," .. new_root_dir,
+				"--ngProbeLocations",
+				-- ngLib .. "," .. new_root_dir .. "/node_modules",
+				ngLib .. "," .. new_root_dir,
+			}
     end,
   }
+
   -- Attach Astro LSP
   require("lspconfig").astro.setup {
     on_attach = on_attach,

@@ -24,10 +24,9 @@ M.execute = function()
   end, { desc = "Change cmp choice" })
   vim.keymap.set("i", "<c-u>", require "luasnip.extras.select_choice", { desc = "Select cmp choice" })
 
-
   require("luasnip/loaders/from_vscode").lazy_load()
 
-	return luasnip
+  return luasnip
 end
 
 return M

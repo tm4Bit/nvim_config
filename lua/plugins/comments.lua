@@ -11,6 +11,7 @@ M.config = function()
   if not status_ok then
     return
   end
+	local map = require("utils.map").map
 
   comment.setup {
     ---Add a space b/w comment and the line
@@ -43,7 +44,7 @@ M.config = function()
       eol = "gcA",
     },
     ---Enable keybindings
-    ---NOTE: If given `false` then the plugin won't create any mappings
+    -- NOTE: If given `false` then the plugin won't create any mappings
     mappings = {
       ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
       basic = true,
@@ -74,6 +75,17 @@ M.config = function()
       end
     end,
   }
+
+	-- Extra mappings
+	map("n", "<leader>/", function()
+		require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
+	end, { desc = "Toggle comment line" })
+	map(
+		"v",
+		"<leader>/",
+		"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+		{ desc = "Toggle comment for selection" }
+	)
 end
 
 return M

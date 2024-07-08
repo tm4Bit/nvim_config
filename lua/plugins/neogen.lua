@@ -6,17 +6,17 @@ local M = {
 		{
 			"<leader>gf",
 			"<cmd>lua require('neogen').generate({ type = 'func' })<cr>",
-			desc = "Generate docs",
+			desc = "Generate function docs",
 		},
 		{
 			"<leader>gc",
 			"<cmd>lua require('neogen').generate({ type = 'class' })<cr>",
-			desc = "Generate docs",
+			desc = "Generate class docs",
 		},
 		{
 			"<leader>gt",
 			"<cmd>lua require('neogen').generate({ type = 'type' })<cr>",
-			desc = "Generate docs",
+			desc = "Generate types docs",
 		},
 	},
 }

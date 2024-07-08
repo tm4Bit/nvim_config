@@ -2,6 +2,15 @@ local autocmd = vim.api.nvim_create_autocmd
 local autogroup = vim.api.nvim_create_augroup
 local cmd = vim.cmd
 
+autocmd({ "BufReadPost", "BufNewFile" }, {
+  desc = "Register Angular treesitter parse to the file",
+  group = autogroup("treesitter_angular_register", { clear = true }),
+  pattern = { "*.component.html", "*.container.html" },
+  callback = function()
+		vim.treesitter.start(nil, "angular")
+  end,
+})
+
 autocmd("BufWinEnter", {
   desc = "Make some windows close with q",
   group = autogroup("quit_q", { clear = true }),

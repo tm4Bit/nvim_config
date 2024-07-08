@@ -1,6 +1,8 @@
 local M = {}
 
 M.servers = {
+	"clangd",
+	"jdtls",
   "lua_ls",
   "cssls",
   "html",
