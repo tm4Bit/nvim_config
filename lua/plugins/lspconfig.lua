@@ -3,6 +3,8 @@ local M = {
   event = { "BufReadPre" },
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
+    { "folke/trouble.nvim" },
+    { "RRethy/vim-illuminate" },
   },
 }
 
@@ -18,14 +20,21 @@ function M.config()
     return
   end
 
+	-- illuminate setup
+	local denylist = require("utils.lsp.illuminate-denylist")
+	require("illuminate").configure(denylist)
+
   -- utils
   local get_icon = require("utils.icons").get_icon
   local servers = require("utils.servers").servers
   local on_attach = require("utils.lsp.utils").on_attach
+  --[[ local on_attach = function()
+    require "utils.lsp.on-attach"
+  end ]]
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
   for _, server in pairs(servers) do
     local opts = {
@@ -42,8 +51,8 @@ function M.config()
       opts = vim.tbl_deep_extend("force", conf_opts, opts)
     end
 
-    -- Jump angularls config
-    if server == "angularls" then
+    -- Jump java-language-server config
+    if server == "jdtls" then
       goto continue
     end
 
@@ -57,33 +66,36 @@ function M.config()
   end
 
   -- Attach Angular LSP
-  local tsLib = "/home/tma/.local/share/nvim/mason/packages/angular-language-server/node_modules"
-	local ngLib = "/home/tma/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server/node_modules"
-  local cmd = {"ngserver", "--stdio", "--tsProbeLocations", tsLib , "--ngProbeLocations", ngLib}
+  local ng_lib =
+    "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/lib/node_modules/@angular/language-server"
+  local ng_bin = "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/bin/ngserver"
+  local cmd = { ng_bin, "--stdio", "--tsProbeLocations", ng_lib, "--ngProbeLocations", ng_lib }
 
   require("lspconfig").angularls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = cmd,
-    on_new_config = function(new_config,new_root_dir)
-			-- new_config.cmd = cmd
+    on_new_config = function(new_config, new_root_dir)
+      -- new_config.cmd = cmd
       new_config.cmd = {
-				"ngserver",
-				"--stdio",
-				"--tsProbeLocations",
-				-- tsLib .. "," .. new_root_dir .. "/node_modules",
-				tsLib .. "," .. new_root_dir,
-				"--ngProbeLocations",
-				-- ngLib .. "," .. new_root_dir .. "/node_modules",
-				ngLib .. "," .. new_root_dir,
-			}
+        "ngserver",
+        "--stdio",
+        "--tsProbeLocations",
+        ng_lib .. "," .. new_root_dir,
+        "--ngProbeLocations",
+        ng_lib .. "," .. new_root_dir,
+      }
     end,
   }
 
   -- Attach Astro LSP
+  local astro_bin = "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/bin/astro-ls"
+  local astro_cmd = { astro_bin, "--stdio" }
+
   require("lspconfig").astro.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    cmd = astro_cmd,
   }
 
   local signs = {

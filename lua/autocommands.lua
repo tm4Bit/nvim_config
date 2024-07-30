@@ -2,12 +2,49 @@ local autocmd = vim.api.nvim_create_autocmd
 local autogroup = vim.api.nvim_create_augroup
 local cmd = vim.cmd
 
+autocmd({ "FileType" }, {
+  desc = "Open help in a vertical buffer",
+  group = autogroup("tma-help-win", { clear = true }),
+  pattern = "help",
+  callback = function()
+    vim.cmd.wincmd "L"
+    vim.api.nvim_win_set_width(0, 120)
+  end,
+})
+
+autocmd({ "FileType" }, {
+  desc = "Change some vim.opt in lua files",
+  group = autogroup("tma-lua-options", { clear = true }),
+  pattern = "lua",
+  callback = function()
+    vim.opt.colorcolumn = "120"
+  end,
+})
+
+autocmd({ "FileType" }, {
+  desc = "Disable indentscope for certain filetypes",
+  group = autogroup("indentscope_disable", { clear = true }),
+  pattern = {
+    "help",
+    "trouble",
+    "lazy",
+    "mason",
+    "notify",
+    "spectre_panel",
+    "bqf",
+    "oil",
+  },
+  callback = function()
+    vim.b.miniindentscope_disable = true
+  end,
+})
+
 autocmd({ "BufReadPost", "BufNewFile" }, {
   desc = "Register Angular treesitter parse to the file",
   group = autogroup("treesitter_angular_register", { clear = true }),
   pattern = { "*.component.html", "*.container.html" },
   callback = function()
-		vim.treesitter.start(nil, "angular")
+    vim.treesitter.start(nil, "angular")
   end,
 })
 
@@ -41,33 +78,28 @@ vim.api.nvim_create_autocmd("UIEnter", {
       " ",
       " ",
       " ",
-      get_icon("Bolt", 1) .. "Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms " .. get_icon "Clock",
+      get_icon("Bolt", 1)
+        .. "Neovim loaded "
+        .. stats.loaded
+        .. "/"
+        .. stats.count
+        .. " plugins in "
+        .. ms
+        .. "ms "
+        .. get_icon "Clock",
     }
-    dashboard.section.footer.opts.hl = "DashboardFooter"
+    dashboard.section.footer.opts.hl = "NonText"
     pcall(cmd.AlphaRedraw)
   end,
 })
 
-autocmd({ "User", "BufEnter" }, {
+autocmd({ "User" }, {
   desc = "Disable statusline for alpha",
   group = alpha_settings,
-  callback = function(event)
-    if
-      (
-        (event.event == "User" and event.file == "AlphaReady")
-        or (event.event == "BufEnter" and vim.api.nvim_get_option_value("filetype", { buf = event.buf }) == "alpha")
-      ) and not vim.g.before_alpha
-    then
-      vim.g.before_alpha = { laststatus = vim.opt.laststatus:get() }
-      vim.opt.laststatus = 0
-    elseif
-      vim.g.before_alpha
-      and event.event == "BufEnter"
-      and vim.api.nvim_get_option_value("buftype", { buf = event.buf }) ~= "nofile"
-    then
-      vim.opt.laststatus = vim.g.before_alpha.laststatus
-      vim.g.before_alpha = nil
-    end
+  pattern = "AlphaReady",
+  callback = function()
+    vim.b.ministatusline_disable = true
+    vim.b.miniindentscope_disable = true
   end,
 })
 

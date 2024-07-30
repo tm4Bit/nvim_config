@@ -7,7 +7,7 @@ M.servers = {
   "cssls",
   "html",
   "tsserver",
-  "angularls",
+	"intelephense",
 	"svelte",
   "tailwindcss",
   "prismals",

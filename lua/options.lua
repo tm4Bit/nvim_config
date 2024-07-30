@@ -29,7 +29,9 @@ opt.relativenumber = true
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.signcolumn = "yes"
---opt.list = true
+opt.conceallevel = 2
+opt.list = true
+opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Behavior
 opt.mouse = "a"
@@ -45,6 +47,7 @@ opt.showcmd = false
 opt.showmode = false
 opt.tabstop = 2
 opt.shiftwidth = 2
+opt.inccommand = "split"
 
 -- Plugins related stuff
 opt.completeopt = { "menuone", "noselect" }

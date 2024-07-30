@@ -11,14 +11,15 @@
 --]]
 
 if vim.g.vscode then
-	-- vscode keymaps and options for Neovim plugin
+  -- vscode keymaps and options for Neovim plugin
   require "code.keymaps"
-	require "code.options"
+  require "code.options"
 else
   -- Require main files
   require "options"
   require "keymaps"
   require "lazy_init"
   require "autocommands"
-	require "terminal"
+  require "terminal"
+  require "highlight"
 end

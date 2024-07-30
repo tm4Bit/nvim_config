@@ -1,6 +1,5 @@
 local M = {
   "goolord/alpha-nvim",
-  -- event = "VimEnter",
 }
 
 function M.config()
@@ -40,8 +39,8 @@ function M.config()
     button("LDR   q", get_icon("Quit", 1) .. " Quit"),
   }
 
-  dashboard.section.header.opts.hl = "DashboardHeader"
-  dashboard.section.buttons.opts.hl = "DashboardCenter"
+  dashboard.section.header.opts.hl = "AlphaHeader"
+  -- dashboard.section.buttons.opts.hl = "@boolean"
 
   dashboard.opts.opts.noautocmd = true
   alpha.setup(dashboard.opts)

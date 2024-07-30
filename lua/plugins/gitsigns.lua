@@ -36,7 +36,7 @@ M.opts = {
     -- Options passed to nvim_open_win
     border = "single",
     style = "minimal",
-    relative = "cursor",
+		relative = "cursor",
     row = 0,
     col = 1,
   },
@@ -51,23 +51,23 @@ M.config = function(_, opts)
   end
 
   -- Navigation
-  map("n", "]g", "<cmd>Gitsigns next_hunk<CR><cr>", { desc = "Next hunk" })
-  map("n", "[g", "<cmd>Gitsigns prev_hunk<CR><cr>", { desc = "Previous hunk" })
+  map("n", "]g", "<cmd>Gitsigns next_hunk<cr>", { desc = "[GIT]:Next hunk" })
+  map("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", { desc = "[GIT]:Previous hunk" })
 
   -- Actions
-  map("n", "<leader>gs", ":Gitsigns stage_hunk<CR>")
-  map("v", "<leader>gs", ":Gitsigns stage_hunk<CR>")
-  map("n", "<leader>gr", ":Gitsigns reset_hunk<CR>")
-  map("v", "<leader>gr", ":Gitsigns reset_hunk<CR>")
-  map("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<CR>")
-  map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>")
-  map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>")
-  map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>")
-  map("n", "<leader>gb", '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-  map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
-  map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>")
-  map("n", "<leader>gD", '<cmd>lua require"gitsigns".diffthis("~")<CR>')
-  map("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>")
+  map("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "[GIT]:Stage hunk" })
+  map("v", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "[GIT]:Stage selected hunk" })
+  map("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "[GIT]:Reset hunk" })
+  map("v", "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "[GIT]:Reset selected hunk" })
+  map("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<CR>", { desc = "[GIT]:Stage buffer" })
+  map("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "[GIT]:Undo stage hunk" })
+  map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>", { desc = "[GIT]:Reset Buffer" })
+  map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "[GIT]:Preview hunk" })
+  map("n", "<leader>gb", '<cmd>lua require"gitsigns".blame_line{full=true}<CR>', { desc = "[GIT]:Blame line" })
+  map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "[GIT]:Blame line toggle" })
+  map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "[GIT]:Git diff" })
+  map("n", "<leader>gD", '<cmd>lua require"gitsigns".diffthis("~")<CR>', { desc = "[GIT]:diff" })
+  map("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", { desc = "[GIT]:Toggle delete" })
 end
 
 return M

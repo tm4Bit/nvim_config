@@ -1,5 +1,6 @@
 local M = {
 	"folke/trouble.nvim",
+  -- event = { "VeryLazy" },
 	opts = {
 		auto_close = true,       -- auto close when there are no items
 		focus = true,            -- Focus the window when opened
@@ -12,27 +13,27 @@ local M = {
 		{
 			"<leader>tt",
 			"<cmd>Trouble diagnostics toggle<cr>",
-			desc = "Diagnostics (Trouble)",
+			desc = "[TROUBLE]:Diagnostics",
 		},
 		{
 			"<leader>tb",
 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-			desc = "Buffer Diagnostics (Trouble)",
+			desc = "[TROUBLE]:Buffer Diagnostics",
 		},
 		{
 			"<leader>ts",
 			"<cmd>Trouble lsp_document_symbols toggle win.position=right win.size.width=86<cr>",
-			desc = "Symbols (Trouble)",
+			desc = "[TROUBLE]:Symbols",
 		},
 		{
 			"<leader>tl",
 			"<cmd>Trouble lsp toggle win.position=right win.size.width=86<cr>",
-			desc = "LSP Definitions / references / ... (Trouble)",
+			desc = "[TROUBLE]:LSP Definitions / references / ...",
 		},
 		{
 			"<leader>tq",
 			"<cmd>Trouble qflist toggle<cr>",
-			desc = "Quickfix List (Trouble)",
+			desc = "[TROUBLE]:Quickfix List",
 		},
 	},
 }

@@ -1,33 +1,43 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.8",
+  event = { "VeryLazy" },
   dependencies = {
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-telescope/telescope-ui-select.nvim",
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
-    { "<leader>;", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "List buffers" },
-    { "<leader>fw", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Find words" },
-    { "<leader>f'", "<cmd>lua require('telescope.builtin').marks()<cr>", desc = "Find marks" },
-    { "<leader>fc", "<cmd>lua require('telescope.builtin').grep_string()<cr>", desc = "Find word under cursor" },
-    { "<leader>fC", "<cmd>lua require('telescope.builtin').commands()<cr>", desc = "Find commands" },
-    { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "Find help" },
-    { "<leader>fH", "<cmd>lua require('telescope.builtin').highlights()<cr>", desc = "Find highlights" },
-    { "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", desc = "List keymaps" },
-    { "<leader>fm", "<cmd>lua require('telescope.builtin').man_pages()<cr>", desc = "Find man" },
-    { "<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", desc = "Find old files" },
-    { "<leader>fr", "<cmd>lua require('telescope.builtin').registers()<cr>", desc = "Find registers" },
-    { "<leader>f<CR>", "<cmd>lua require('telescope.builtin').resume()<cr>", desc = "Resume previous search" },
+    { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "[TELESCOPE]:Find files" },
+    { "<leader>;", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "[TELESCOPE]:List buffers" },
+    { "<leader>fw", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "[TELESCOPE]:Find words" },
+    { "<leader>f'", "<cmd>lua require('telescope.builtin').marks()<cr>", desc = "[TELESCOPE]:Find marks" },
+    {
+      "<leader>fc",
+      "<cmd>lua require('telescope.builtin').grep_string()<cr>",
+      desc = "[TELESCOPE]:Find word under cursor",
+    },
+    { "<leader>fC", "<cmd>lua require('telescope.builtin').commands()<cr>", desc = "[TELESCOPE]:Find commands" },
+    { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "[TELESCOPE]:Find help" },
+    { "<leader>fH", "<cmd>lua require('telescope.builtin').highlights()<cr>", desc = "[TELESCOPE]:Find highlights" },
+    { "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", desc = "[TELESCOPE]:List keymaps" },
+    { "<leader>fm", "<cmd>lua require('telescope.builtin').man_pages()<cr>", desc = "[TELESCOPE]:Find man" },
+    { "<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", desc = "[TELESCOPE]:Find old files" },
+    { "<leader>fr", "<cmd>lua require('telescope.builtin').registers()<cr>", desc = "[TELESCOPE]:Find registers" },
+    {
+      "<leader>f<CR>",
+      "<cmd>lua require('telescope.builtin').resume()<cr>",
+      desc = "[TELESCOPE]:Resume previous search",
+    },
     {
       "<leader>f.",
       "<cmd>lua require('telescope.builtin').find_files { hidden = true, no_ignore = true }<cr>",
-      desc = "Find all files",
+      desc = "[TELESCOPE]:Find all files",
     },
     {
       "<leader>f/",
       "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
-      desc = "Find words in current buffer",
+      desc = "[TELESCOPE]:Find words in current buffer",
     },
   },
 }
@@ -101,6 +111,7 @@ M.config = function()
       },
     },
     extensions = {
+			fzf = {},
       ["ui-select"] = {
         require("telescope.themes").get_dropdown {
           -- even more opts
@@ -110,6 +121,7 @@ M.config = function()
     },
   }
   telescope.load_extension "ui-select"
+  telescope.load_extension "fzf"
 end
 
 return M

@@ -31,15 +31,17 @@ function M.config()
       },
       formatting.prettierd.with {
         extra_filetypes = { "toml", "astro" },
-        -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
         condition = function(utils)
           return utils.root_has_file {  ".prettierrc.json", ".prettierrc" }
         end,
       },
 
       -- diagnostics.selene,
+			formatting.phpcsfixer,
+
       formatting.stylua,
       formatting.gofumpt,
+
       formatting.goimports,
       diagnostics.golangci_lint,
 

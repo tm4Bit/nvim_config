@@ -24,8 +24,8 @@ M.alpha_button = function(sc, txt)
       cursor = -2,
       width = 36,
       align_shortcut = "right",
-      hl = "DashboardCenter",
-      hl_shortcut = "DashboardShortcut",
+      hl = "AlphaButtons",
+      hl_shortcut = "AlphaShortcut",
     },
   }
 end

@@ -8,7 +8,7 @@ local M = {
 			function()
 				require("harpoon"):list():add()
 			end,
-			desc = "Harpoon this file",
+			desc = "[HARPOON]:This file",
 		},
 		{
 			"<tab>",
@@ -16,49 +16,77 @@ local M = {
 				local harpoon = require "harpoon"
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
-			desc = "Open Harpoon",
+			desc = "[HARPOON]:Open",
 		},
 		{
 			"<localleader>a",
 			function()
 				require("harpoon"):list():select(1)
 			end,
-			desc = "Harpoon 1",
+			desc = "[HARPOON]:1",
 		},
 		{
 			"<localleader>s",
 			function()
 				require("harpoon"):list():select(2)
 			end,
-			desc = "Harpoon 2",
+			desc = "[HARPOON]:2",
 		},
 		{
 			"<localleader>d",
 			function()
 				require("harpoon"):list():select(3)
 			end,
-			desc = "Harpoon 3",
+			desc = "[HARPOON]:3",
 		},
 		{
 			"<localleader>f",
 			function()
 				require("harpoon"):list():select(4)
 			end,
-			desc = "Harpoon 4",
+			desc = "[HARPOON]:4",
+		},
+		{
+			"<localleader>q",
+			function()
+				require("harpoon"):list():select(5)
+			end,
+			desc = "[HARPOON]:5",
+		},
+		{
+			"<localleader>w",
+			function()
+				require("harpoon"):list():select(6)
+			end,
+			desc = "[HARPOON]:6",
+		},
+		{
+			"<localleader>e",
+			function()
+				require("harpoon"):list():select(7)
+			end,
+			desc = "[HARPOON]:7",
+		},
+		{
+			"<localleader>r",
+			function()
+				require("harpoon"):list():select(8)
+			end,
+			desc = "[HARPOON]:8",
 		},
 		{
 			"[h",
 			function()
 				require("harpoon"):list():prev()
 			end,
-			desc = "Harpoon prev",
+			desc = "[HARPOON]:prev",
 		},
 		{
 			"]h",
 			function()
 				require("harpoon"):list():next()
 			end,
-			desc = "Harpoon next",
+			desc = "[HARPOON]:next",
 		},
 	},
 }

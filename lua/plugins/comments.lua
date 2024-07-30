@@ -79,12 +79,12 @@ M.config = function()
 	-- Extra mappings
 	map("n", "<leader>/", function()
 		require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
-	end, { desc = "Toggle comment line" })
+	end, { desc = "[COMMENT]:Toggle comment line" })
 	map(
 		"v",
 		"<leader>/",
 		"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
-		{ desc = "Toggle comment for selection" }
+		{ desc = "[COMMENT]:Toggle comment for selection" }
 	)
 end
 
