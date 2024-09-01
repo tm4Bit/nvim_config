@@ -23,6 +23,16 @@ function M.config()
     color_icons = true,
     default = true,
     override_by_filename = {
+			["go.sum"] = {
+				icon = "",
+				color = "#126B81",
+				name = "go",
+			},
+			["go.mod"] = {
+				icon = "",
+				color = "#126B81",
+				name = "go",
+			},
       [".gitignore"] = {
         icon = get_icon "Git",
         color = "#f1502f",
@@ -106,6 +116,11 @@ function M.config()
         color = "#FF6900",
         name = "handlebars",
       },
+			["go"] = {
+				icon = "󰟓 ",
+				color = "#126B81",
+				name = "go",
+			}
     },
   }
 end

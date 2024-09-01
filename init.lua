@@ -22,4 +22,6 @@ else
   require "autocommands"
   require "terminal"
   require "highlight"
+
+	vim.cmd "colorscheme rose-pine"
 end

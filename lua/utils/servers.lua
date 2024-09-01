@@ -9,7 +9,7 @@ M.servers = {
   "tsserver",
 	"intelephense",
 	"svelte",
-  "tailwindcss",
+  -- "tailwindcss",
   "prismals",
   "marksman",
   "pyright",
@@ -18,6 +18,7 @@ M.servers = {
   "yamlls",
   "emmet_ls",
   "gopls",
+	"templ",
 }
 
 return M

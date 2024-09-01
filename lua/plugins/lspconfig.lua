@@ -14,6 +14,7 @@ function M.config()
   if not lspconfig_status_ok then
     return
   end
+
   -- cmp
   local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if not cmp_nvim_lsp_status_ok then
@@ -28,10 +29,8 @@ function M.config()
   local get_icon = require("utils.icons").get_icon
   local servers = require("utils.servers").servers
   local on_attach = require("utils.lsp.utils").on_attach
-  --[[ local on_attach = function()
-    require "utils.lsp.on-attach"
-  end ]]
 
+	-- capabilities
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(capabilities)

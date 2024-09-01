@@ -48,6 +48,7 @@ opt.showmode = false
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.inccommand = "split"
+opt.iskeyword:append("-")
 
 -- Plugins related stuff
 opt.completeopt = { "menuone", "noselect" }

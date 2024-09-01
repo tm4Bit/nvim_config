@@ -4,7 +4,7 @@ local M = {
   keys = {
     {
       "<leader>e",
-      "<cmd>Oil --float<cr>",
+      "<cmd>Oil<cr>", -- Add the flag --float to open in a float window
       desc = "[OIL]:Open",
     },
   },
