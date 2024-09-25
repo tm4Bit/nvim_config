@@ -11,8 +11,8 @@ map("v", "p", '"_dP', { desc = "Better paste" }) -- Better paste
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", { desc = "[LSP]Format file" }) -- format file
 
 -- Navigation
-map("n", "]b", "<cmd>bnext<CR>", { desc = "[BUFFER]Next buffer" })
-map("n", "[b", "<cmd>bprev<CR>", { desc = "[BUFFER]Previous buffer" })
+map("n", "]b", "<cmd>bnext<CR>", { desc = "[BUFFER]:Next buffer" })
+map("n", "[b", "<cmd>bprev<CR>", { desc = "[BUFFER]:Previous buffer" })
 
 -- Resize buffer
 map("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "Resize split up" })

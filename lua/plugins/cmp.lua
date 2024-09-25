@@ -114,7 +114,7 @@ function M.config()
       documentation = cmp.config.window.bordered(border_opts), -- Pass boarder_opts as args
     },
     experimental = {
-      ghost_text = false,
+      ghost_text = true,
     },
   }
 end
