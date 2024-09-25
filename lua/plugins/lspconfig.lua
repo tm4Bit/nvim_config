@@ -21,16 +21,16 @@ function M.config()
     return
   end
 
-	-- illuminate setup
-	local denylist = require("utils.lsp.illuminate-denylist")
-	require("illuminate").configure(denylist)
+  -- illuminate setup
+  local denylist = require "utils.lsp.illuminate-denylist"
+  require("illuminate").configure(denylist)
 
   -- utils
   local get_icon = require("utils.icons").get_icon
   local servers = require("utils.servers").servers
   local on_attach = require("utils.lsp.utils").on_attach
 
-	-- capabilities
+  -- capabilities
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(capabilities)

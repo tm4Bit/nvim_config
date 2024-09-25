@@ -6,7 +6,7 @@ local M = {
     "MunifTanjim/nui.nvim",
     "nvimtools/none-ls.nvim",
   },
-	ft = { "php", "blade.php" },
+  ft = { "php", "blade.php" },
   cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
   keys = {
     { "<localleader>la", "<cmd>Laravel artisan<cr>", "[LARAVEL]:Artisan" },
