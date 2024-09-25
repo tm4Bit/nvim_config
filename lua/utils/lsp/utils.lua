@@ -34,6 +34,11 @@ M.on_attach = function(client, bufnr)
   M.map(bufnr, "<leader>lr", vim.lsp.buf.rename, "[LSP]:Rename")
   -- M.map(bufnr, "<leader>lf", vim.lsp.buf.format { async = true }, "Format file")
 
+  -- Disabled renameProvider for angularls.
+  if client.name == "angularls" then
+    client.server_capabilities.renameProvider = false
+  end
+
   -- FIX: When creating a new file throws a error in `script/core/hint.lua` Error: attempt to index a nil value (local "last")
   -- Itsn't very helpful. Make the code a lot more dirty and you can get the same information from the old and nice `gh`
   --[[
