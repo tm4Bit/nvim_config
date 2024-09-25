@@ -8,7 +8,9 @@ M.alpha_button = function(sc, txt)
   -- replace <leader> in shortcut text with LDR for nicer printing
   local sc_ = sc:gsub("%s", ""):gsub("LDR", "<leader>")
   -- if the leader is set, replace the text with the actual leader key for nicer printing
-  if vim.g.mapleader then sc = sc:gsub("LDR", vim.g.mapleader == " " and "SPC" or vim.g.mapleader) end
+  if vim.g.mapleader then
+    sc = sc:gsub("LDR", vim.g.mapleader == " " and "SPC" or vim.g.mapleader)
+  end
   -- return the button entity to display the correct text and send the correct keybinding on press
   return {
     type = "button",
@@ -24,8 +26,10 @@ M.alpha_button = function(sc, txt)
       cursor = -2,
       width = 36,
       align_shortcut = "right",
-      hl = "AlphaButtons",
-      hl_shortcut = "AlphaShortcut",
+      -- hl = "AlphaButtons",
+      hl = "DashboardIcon",
+      -- hl_shortcut = "AlphaShortcut",
+      hl_shortcut = "DashboardShortCut",
     },
   }
 end

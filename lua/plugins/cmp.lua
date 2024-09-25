@@ -53,8 +53,8 @@ function M.config()
       end,
     },
     mapping = cmp.mapping.preset.insert {
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping {
         i = cmp.mapping.abort(),
@@ -62,7 +62,7 @@ function M.config()
       },
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = cmp.mapping.confirm { select = true },
+      ["<C-y>"] = cmp.mapping.confirm { select = true },
       ["<C-n>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()

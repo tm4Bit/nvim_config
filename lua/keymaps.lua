@@ -3,13 +3,16 @@ local map = require("utils.map").map
 map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Open Lazy" }) -- Lazy
 map("n", "<leader>N", "<cmd>NullLsInfo<cr>", { desc = "Null-ls information" }) -- NullLsInfo
 map("n", "<leader>M", "<cmd>Mason<cr>", { desc = "Open Lazy" }) -- Mason
-map("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "[LSP]Restart server" }) -- Restart Lsp
+map("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "[LSP]:Restart server" }) -- Restart Lsp
 map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close the current buffer" }) -- close buffer
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Dismiss highlight in search" }) -- Clear highlight
 map("n", "<leader>C", "<cmd>e $MYVIMRC<CR>", { desc = "GoTo configuration file" }) -- GoTo configuration file
 map("v", "p", '"_dP', { desc = "Better paste" }) -- Better paste
-map("i", "kj", "<esc>", { desc = "Better escape" }) -- better escape
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", { desc = "[LSP]Format file" }) -- format file
+
+-- Navigation
+map("n", "]b", "<cmd>bnext<CR>", { desc = "[BUFFER]Next buffer" })
+map("n", "[b", "<cmd>bprev<CR>", { desc = "[BUFFER]Previous buffer" })
 
 -- Resize buffer
 map("n", "<C-Up>", "<cmd>resize -2<CR>", { desc = "Resize split up" })

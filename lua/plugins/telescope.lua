@@ -8,7 +8,11 @@ local M = {
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "[TELESCOPE]:Find files" },
+    {
+      "<leader>ff",
+      "<cmd>lua require('telescope.builtin').find_files({ path_display = { 'filename_first' } })<cr>",
+      desc = "[TELESCOPE]:Find files",
+    },
     { "<leader>;", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "[TELESCOPE]:List buffers" },
     { "<leader>fw", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "[TELESCOPE]:Find words" },
     { "<leader>f'", "<cmd>lua require('telescope.builtin').marks()<cr>", desc = "[TELESCOPE]:Find marks" },
@@ -56,7 +60,7 @@ M.config = function()
       prompt_prefix = get_icon("Telescope", 2),
       selection_caret = get_icon("Selected", 1),
       path_display = { "smart" },
-      file_ignore_patterns = { ".git/", "node_modules" },
+      file_ignore_patterns = { ".git/", "node_modules", "^docs/", "**/*.svg", "^svg/", "**/*.png", "**/*.jpg" },
       mappings = {
         i = {
           ["<Down>"] = actions.move_selection_next,
@@ -111,7 +115,7 @@ M.config = function()
       },
     },
     extensions = {
-			fzf = {},
+      fzf = {},
       ["ui-select"] = {
         require("telescope.themes").get_dropdown {
           -- even more opts

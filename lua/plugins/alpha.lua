@@ -43,8 +43,8 @@ function M.config()
     button("LDR   q", get_icon("Quit", 1) .. " Quit"),
   }
 
-  dashboard.section.header.opts.hl = "AlphaHeader"
-  -- dashboard.section.buttons.opts.hl = "@boolean"
+  -- dashboard.section.header.opts.hl = "AlphaHeader"
+  -- dashboard.section.buttons.opts.hl = "DashboardHea"
 
   dashboard.opts.opts.noautocmd = true
   alpha.setup(dashboard.opts)

@@ -42,7 +42,7 @@ autocmd({ "FileType" }, {
 autocmd({ "BufReadPost", "BufNewFile" }, {
   desc = "Register Angular treesitter parse to the file",
   group = autogroup("treesitter_angular_register", { clear = true }),
-  pattern = { "*.component.html", "*.container.html" },
+  pattern = { "*.component.html", "*.container.html", "*.dialog.html" },
   callback = function()
     vim.treesitter.start(nil, "angular")
   end,

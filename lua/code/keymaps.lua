@@ -1,36 +1,42 @@
 -- Remap functions
 function Vscode_terminalToogle()
-	vim.fn.VSCodeNotify("workbench.action.terminal.toggleTerminal")
+  vim.fn.VSCodeNotify "workbench.action.terminal.toggleTerminal"
 end
 function Vscode_multiCursor()
-	vim.fn.VSCodeNotify("editor.action.addSelectionToNextFindMatch")
+  vim.fn.VSCodeNotify "editor.action.addSelectionToNextFindMatch"
 end
 function Vscode_comment()
-	vim.fn.VSCodeNotify("editor.action.commentLine")
+  vim.fn.VSCodeNotify "editor.action.commentLine"
 end
 function Vscode_blockComment()
-	vim.fn.VSCodeNotify("editor.action.blockComment")
+  vim.fn.VSCodeNotify "editor.action.blockComment"
 end
 function Vscode_saveFile()
-	vim.fn.VSCodeNotify("workbench.action.files.save")
+  vim.fn.VSCodeNotify "workbench.action.files.save"
 end
 function Vscode_closeEditor()
-	vim.fn.VSCodeNotify("workbench.action.closeActiveEditor")
+  vim.fn.VSCodeNotify "workbench.action.closeActiveEditor"
 end
 function Vscode_showHover()
-	vim.fn.VSCodeNotify("editor.action.showHover")
+  vim.fn.VSCodeNotify "editor.action.showHover"
 end
 function Vscode_error()
-	vim.fn.VSCodeNotify("editor.action.marker.next")
+  vim.fn.VSCodeNotify "editor.action.marker.next"
 end
 function Vscode_prevTab()
-	vim.fn.VSCodeNotify("workbench.action.previousEditor")
+  vim.fn.VSCodeNotify "workbench.action.previousEditor"
 end
 function Vscode_nextTab()
-	vim.fn.VSCodeNotify("workbench.action.nextEditor")
+  vim.fn.VSCodeNotify "workbench.action.nextEditor"
 end
 function Vscode_explorer()
-	vim.fn.VSCodeNotify("workbench.view.explorer")
+  vim.fn.VSCodeNotify "workbench.view.explorer"
+end
+function Vscode_git_preview()
+  vim.fn.VSCodeNotify "editor.action.dirtydiff.next"
+end
+function Vscode_search_and_replace()
+  vim.fn.VSCodeNotify "workbench.action.findInFiles"
 end
 
 vim.g.mapleader = " "
@@ -53,4 +59,6 @@ keymap("n", "H", Vscode_prevTab)
 keymap("n", "L", Vscode_nextTab)
 keymap("n", "<leader>e", Vscode_explorer)
 keymap("v", "<leader>n", Vscode_multiCursor)
-keymap("n", "<C-l>", Vscode_terminalToogle)
+keymap("n", "<leader>tt", Vscode_terminalToogle)
+keymap("n", "<leader>gp", Vscode_git_preview)
+keymap("n", "<leader>S", Vscode_search_and_replace)
