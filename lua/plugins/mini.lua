@@ -17,6 +17,9 @@ local M = { -- Collection of various small independent plugins/modules
     statusline.section_location = function()
       return "%2l:%-2v"
     end
+    statusline.section_filename = function()
+      return "%f%r"
+    end
   end,
 }
 
