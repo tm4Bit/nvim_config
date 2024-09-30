@@ -1,7 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.8",
-  event = { "VeryLazy" },
+  event = "VeryLazy",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-telescope/telescope-ui-select.nvim",
@@ -15,6 +15,11 @@ local M = {
     },
     { "<leader>;", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "[TELESCOPE]:List buffers" },
     { "<leader>fw", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "[TELESCOPE]:Find words" },
+    {
+      "<leader>fg",
+      "<cmd>lua require('telescope.builtin').grep_word()<cr>",
+      desc = "[TELESCOPE]:Find word under cursor",
+    },
     { "<leader>f'", "<cmd>lua require('telescope.builtin').marks()<cr>", desc = "[TELESCOPE]:Find marks" },
     {
       "<leader>fc",

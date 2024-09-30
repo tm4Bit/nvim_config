@@ -9,8 +9,8 @@ M.check_backspace = function()
 end
 
 M.border_opts = {
-  border = "single",
-  -- border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+  -- border = "single",
+  border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
 }
 
 M.kind_icons = {

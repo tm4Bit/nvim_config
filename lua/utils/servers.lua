@@ -1,14 +1,14 @@
 local M = {}
 
 M.servers = {
-	"clangd",
-	"jdtls",
+  "clangd",
+  "jdtls",
   "lua_ls",
   "cssls",
   "html",
-  "tsserver",
-	"intelephense",
-	"svelte",
+  "ts_ls",
+  "intelephense",
+  "svelte",
   -- "tailwindcss",
   "prismals",
   "marksman",
@@ -18,7 +18,7 @@ M.servers = {
   "yamlls",
   "emmet_ls",
   "gopls",
-	"templ",
+  "templ",
 }
 
 return M

@@ -2,7 +2,7 @@ local M = {
   "numToStr/Comment.nvim",
   event = { "BufRead", "BufNewFile" },
   dependencies = {
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
 }
 
@@ -11,7 +11,7 @@ M.config = function()
   if not status_ok then
     return
   end
-	local map = require("utils.map").map
+  local map = require("utils.map").map
 
   comment.setup {
     ---Add a space b/w comment and the line
@@ -76,16 +76,16 @@ M.config = function()
     end,
   }
 
-	-- Extra mappings
-	map("n", "<leader>/", function()
-		require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
-	end, { desc = "[COMMENT]:Toggle comment line" })
-	map(
-		"v",
-		"<leader>/",
-		"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
-		{ desc = "[COMMENT]:Toggle comment for selection" }
-	)
+  -- Extra mappings
+  map("n", "<leader>/", function()
+    require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
+  end, { desc = "[COMMENT]:Toggle comment line" })
+  map(
+    "v",
+    "<leader>/",
+    "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
+    { desc = "[COMMENT]:Toggle comment for selection" }
+  )
 end
 
 return M

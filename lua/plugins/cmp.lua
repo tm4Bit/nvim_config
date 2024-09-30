@@ -1,20 +1,19 @@
 local M = {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "saadparwaiz1/cmp_luasnip" },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lua",
+    "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind.nvim",
     {
       "L3MON4D3/LuaSnip",
-      event = "InsertEnter",
       dependencies = {
         "rafamadriz/friendly-snippets",
       },
     },
-    { "hrsh7th/cmp-nvim-lua" },
-    { "onsails/lspkind.nvim" },
   },
   event = {
     "InsertEnter",
@@ -114,7 +113,7 @@ function M.config()
       documentation = cmp.config.window.bordered(border_opts), -- Pass boarder_opts as args
     },
     experimental = {
-      ghost_text = true,
+      ghost_text = false,
     },
   }
 end

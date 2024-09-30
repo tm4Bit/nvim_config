@@ -2,9 +2,9 @@ local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre" },
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "folke/trouble.nvim" },
-    { "RRethy/vim-illuminate" },
+    "hrsh7th/cmp-nvim-lsp",
+    "folke/trouble.nvim",
+    "RRethy/vim-illuminate",
   },
 }
 

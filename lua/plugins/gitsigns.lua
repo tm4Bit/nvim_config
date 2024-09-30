@@ -36,7 +36,7 @@ M.opts = {
     -- Options passed to nvim_open_win
     border = "single",
     style = "minimal",
-		relative = "cursor",
+    relative = "cursor",
     row = 0,
     col = 1,
   },
@@ -64,10 +64,10 @@ M.config = function(_, opts)
   map("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>", { desc = "[GIT]:Reset Buffer" })
   map("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "[GIT]:Preview hunk" })
   map("n", "<leader>gb", '<cmd>lua require"gitsigns".blame_line{full=true}<CR>', { desc = "[GIT]:Blame line" })
-  map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "[GIT]:Blame line toggle" })
+  map("n", "<leader>gtb", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "[GIT]:Blame line toggle" })
   map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "[GIT]:Git diff" })
   map("n", "<leader>gD", '<cmd>lua require"gitsigns".diffthis("~")<CR>', { desc = "[GIT]:diff" })
-  map("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", { desc = "[GIT]:Toggle delete" })
+  map("n", "<leader>gtd", "<cmd>Gitsigns toggle_deleted<CR>", { desc = "[GIT]:Toggle delete" })
 end
 
 return M

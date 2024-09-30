@@ -1,6 +1,5 @@
 local M = {
   "christoomey/vim-tmux-navigator",
-	-- enabled = false,
   keys = {
     { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "[TMUX]:Move to left split" },
     { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "[TMUX]:Move to below split" },

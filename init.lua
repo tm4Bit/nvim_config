@@ -23,5 +23,5 @@ else
   require "terminal"
   require "highlight"
 
-  vim.cmd "colorscheme kanagawa"
+  vim.cmd "colorscheme kanagawa-dragon"
 end

@@ -1,6 +1,6 @@
 local M = {
   "p00f/clangd_extensions.nvim",
-  commit = "b3b0eb798ecbdd16832fd38d4b07ba31ab4fe831",
+  commit = "b3b0eb798ecbdd16832fd38d4b07ba31ab4fe831", -- There's a bug after this commit
   ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 }
 

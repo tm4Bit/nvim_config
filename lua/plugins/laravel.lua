@@ -13,7 +13,6 @@ local M = {
     { "<localleader>lr", "<cmd>Laravel routes<cr>", "[LARAVEL]:Routes" },
     { "<localleader>lm", "<cmd>Laravel related<cr>", "[LARAVEL]:Related" },
   },
-  -- event = { "VeryLazy" },
   config = true,
 }
 

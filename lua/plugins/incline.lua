@@ -3,7 +3,6 @@ local M = {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  -- event = "VeryLazy",
 }
 
 M.config = function()
@@ -16,23 +15,55 @@ M.config = function()
       margin = { horizontal = 0 },
     },
     debounce_threshold = {
-      falling = 50,
-      rising = 1,
+      falling = 75,
+      rising = 75,
     },
+
     render = function(props)
-      local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-      if filename == "" then
-        filename = "[No Name]"
+      local function get_harpoon_items()
+        local harpoon = require "harpoon"
+        local marks = harpoon:list().items
+        local current_file_path = vim.fn.expand "%:p:."
+        local component = {}
+
+        for id, item in ipairs(marks) do
+          if item.value == current_file_path then
+            table.insert(component, { id .. " ", guifg = "#FFFFFF", gui = "bold" })
+          else
+            table.insert(component, { id .. " ", guifg = "#57534E" })
+          end
+        end
+
+        if #component > 0 then
+          table.insert(component, 1, { " ", get_icon("Harpoon", 1), guifg = "#61AfEf" })
+        end
+        return component
       end
-      local ft_icon, ft_color = devicons.get_icon_color(filename)
-      local modified = vim.bo[props.buf].modified
+
+      local function get_filename()
+        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+        if filename == "" then
+          filename = "[No Name]"
+        end
+        local ft_icon, ft_color = devicons.get_icon_color(filename)
+        local modified = vim.bo[props.buf].modified
+        local component = {}
+
+        table.insert(component, { " ", filename, " ", gui = "bold,italic" })
+
+        if modified then
+          table.insert(component, { get_icon("Modified", 1) })
+        end
+
+        if ft_icon then
+          table.insert(component, 1, { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) })
+        end
+        return component
+      end
+
       return {
-        ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
-        " ",
-        { filename, gui = modified and "bold,italic" or "bold" },
-        " ",
-        -- modified and { get_icon("Modified", 1), guifg = ft_color } or "",
-        modified and { get_icon("Modified", 1) } or "",
+        { get_harpoon_items() },
+        { get_filename() },
         -- guibg = "#44406e",
       }
     end,

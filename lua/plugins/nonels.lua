@@ -2,8 +2,8 @@ local M = {
   "nvimtools/none-ls.nvim",
   event = "BufReadPre",
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    { "nvimtools/none-ls-extras.nvim" }
+    "nvim-lua/plenary.nvim",
+    "nvimtools/none-ls-extras.nvim",
   },
 }
 
@@ -31,22 +31,22 @@ function M.config()
       },
       formatting.prettierd.with {
         extra_filetypes = { "toml", "astro" },
-        -- condition = function(utils)
-        --   return utils.root_has_file {  ".prettierrc.json", ".prettierrc" }
-        -- end,
       },
 
-      -- diagnostics.selene,
-			formatting.phpcsfixer,
-
+      -- Lua
       formatting.stylua,
-      formatting.gofumpt,
 
+      -- Php
+      formatting.phpcsfixer,
+
+      -- Golang
+      formatting.gofumpt,
       formatting.goimports,
       diagnostics.golangci_lint,
 
+      -- Python
       formatting.black.with { extra_args = { "--fast" } },
-      require("none-ls.diagnostics.flake8"),
+      require "none-ls.diagnostics.flake8",
     },
   }
 end

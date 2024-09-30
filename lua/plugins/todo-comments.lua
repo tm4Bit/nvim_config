@@ -67,6 +67,7 @@ local M = {
   },
 }
 
+-- WARN: is `config` function really necessary in this case?!?!
 M.config = function(_, opts)
   local status_ok, todo_comments = pcall(require, "todo-comments")
   if not status_ok then

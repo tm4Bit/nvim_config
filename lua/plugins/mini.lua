@@ -3,6 +3,7 @@ local M = { -- Collection of various small independent plugins/modules
   event = "VeryLazy",
   config = function()
     local get_icon = require("utils.icons").get_icon
+
     require("mini.ai").setup { n_lines = 500 }
     require("mini.indentscope").setup {
       symbol = get_icon "LineLeft",
@@ -18,7 +19,7 @@ local M = { -- Collection of various small independent plugins/modules
       return "%2l:%-2v"
     end
     statusline.section_filename = function()
-      return "%f%r"
+      return get_icon("File", 1) .. "%f%r"
     end
   end,
 }
