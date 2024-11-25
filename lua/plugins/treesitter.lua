@@ -1,5 +1,6 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
+  event = "BufReadPre",
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/playground",
@@ -25,8 +26,10 @@ M.config = function()
     return
   end
 
-  vim.keymap.set("n", "<leader>tp", "<cmd>TSPlaygroundToggle<cr>", { desc = "TS: playground toggle" })
-  vim.keymap.set("n", "<leader>tuc", "<cmd>TSHighlightCapturesUnderCursor<cr>", { desc = "TS: playground toggle" })
+  local map = require("utils.map").map
+
+  map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<cr>", { desc = "[TS]:Playground toggle" })
+  map("n", "<leader>tuc", "<cmd>TSHighlightCapturesUnderCursor<cr>", { desc = "[TS]:Playground toggle" })
 
   treesitter.setup {
     ensure_installed = parsers,

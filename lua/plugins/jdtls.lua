@@ -21,7 +21,7 @@ M.opts = function()
 
   -- ensure that OS is valid
   if not os or os == "" then
-    print "jdtls: Could not detect valid OS"
+    print "[jdtls] Could not detect valid OS"
   end
 
   local on_attach = function(client, bufnr)
@@ -198,7 +198,7 @@ M.config = function(_, opts)
       if opts.root_dir and opts.root_dir ~= "" then
         require("jdtls").start_or_attach(opts)
       else
-        print "jdtls: root_dir not found. Please specify a root marker"
+        print "[jdtls] Root_dir not found. Please specify a root marker"
       end
     end,
   })

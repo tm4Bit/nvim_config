@@ -27,7 +27,7 @@ opt.laststatus = 3
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
-opt.cursorcolumn = true
+opt.cursorcolumn = false
 opt.signcolumn = "yes"
 opt.conceallevel = 2
 opt.list = true
@@ -48,7 +48,7 @@ opt.showmode = false
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.inccommand = "split"
-opt.iskeyword:append("-")
+opt.iskeyword:append "-"
 
 -- Plugins related stuff
 opt.completeopt = { "menuone", "noselect" }

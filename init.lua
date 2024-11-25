@@ -15,6 +15,9 @@ if vim.g.vscode then
   require "code.keymaps"
   require "code.options"
 else
+  -- setup colorscheme
+  vim.g.colorscheme = "catppuccin"
+
   -- Require main files
   require "options"
   require "keymaps"
@@ -23,5 +26,7 @@ else
   require "terminal"
   require "highlight"
 
-  vim.cmd "colorscheme kanagawa-dragon"
+  vim.cmd "colorscheme catppuccin-macchiato" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+  -- vim.cmd "colorscheme rose-pine"
+  -- vim.cmd "colorscheme tokyonight"
 end

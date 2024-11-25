@@ -50,6 +50,11 @@ function M.config()
       opts = vim.tbl_deep_extend("force", conf_opts, opts)
     end
 
+    -- Jump emmet-ls config
+    if server == "emmet_ls" then
+      goto continue
+    end
+
     -- Jump java-language-server config
     if server == "jdtls" then
       goto continue
@@ -64,6 +69,63 @@ function M.config()
     ::continue::
   end
 
+  -- Blade LSP setup
+  local configs = require "lspconfig.configs"
+
+  -- Configure it
+  if not configs.blade then
+    configs.blade = {
+      default_config = {
+        -- Path to the executable: laravel-dev-generators
+        cmd = { "/home/tma/laravel-dev-tools/builds/laravel-dev-tools", "lsp", "-vvv" },
+        filetypes = { "blade" },
+        root_dir = function(fname)
+          return lspconfig.util.find_git_ancestor(fname)
+        end,
+        settings = {},
+      },
+    }
+  end
+
+  -- Set it up
+  lspconfig.blade.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+
+  -- Attach emmet_ls
+  lspconfig.emmet_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {
+      "astro",
+      "handlebars",
+      "css",
+      "eruby",
+      "html",
+      "htmldjango",
+      "javascriptreact",
+      "less",
+      "pug",
+      "sass",
+      "scss",
+      "svelte",
+      "typescriptreact",
+      "vue",
+      "htmlangular",
+      "php",
+    },
+  }
+
+  -- Phpactor
+  require("lspconfig").phpactor.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    init_options = {
+      ["language_server_phpstan.enabled"] = false,
+      ["language_server_psalm.enabled"] = false,
+    },
+  }
   -- Attach Angular LSP
   local ng_lib =
     "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/lib/node_modules/@angular/language-server"

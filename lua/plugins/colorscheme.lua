@@ -1,4 +1,14 @@
-return {
+if false then
+  return {}
+end
+
+local colorschemes = {
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000,
+  },
   {
     "rebelot/kanagawa.nvim",
     lazy = false,
@@ -15,13 +25,6 @@ return {
       transparent = false, -- do not set background color
       dimInactive = false, -- dim inactive window `:h hl-NormalNC`
       terminalColors = true, -- define vim.g.terminal_color_{0,17}
-      colors = { -- add/modify theme and palette colors
-        palette = {},
-        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-      },
-      overrides = function(colors) -- add/modify highlights
-        return {}
-      end,
       theme = "dragon", -- Load "wave" theme when 'background' option is not set
       background = { -- map the value of 'background' option to a theme
         dark = "dragon", -- try "dragon" !
@@ -49,3 +52,9 @@ return {
     },
   },
 }
+
+for _, v in pairs(colorschemes) do
+  if v.name == vim.g.colorscheme then
+    return v
+  end
+end

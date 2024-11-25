@@ -1,5 +1,6 @@
 local M = {
   "b0o/incline.nvim",
+  event = "BufRead",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
@@ -64,7 +65,7 @@ M.config = function()
       return {
         { get_harpoon_items() },
         { get_filename() },
-        -- guibg = "#44406e",
+        guibg = "#24273a",
       }
     end,
   }

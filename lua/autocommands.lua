@@ -8,7 +8,7 @@ autocmd({ "FileType" }, {
   pattern = "help",
   callback = function()
     vim.cmd.wincmd "L"
-    vim.api.nvim_win_set_width(0, 120)
+    vim.api.nvim_win_set_width(0, 80)
   end,
 })
 

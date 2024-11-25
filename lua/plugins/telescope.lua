@@ -8,18 +8,11 @@ local M = {
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    {
-      "<leader>ff",
-      "<cmd>lua require('telescope.builtin').find_files({ path_display = { 'filename_first' } })<cr>",
-      desc = "[TELESCOPE]:Find files",
-    },
+    { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "[TELESCOPE]:Find files" },
+    { "<localleader>g", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "[TELESCOPE]:Find files" },
     { "<leader>;", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "[TELESCOPE]:List buffers" },
     { "<leader>fw", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "[TELESCOPE]:Find words" },
-    {
-      "<leader>fg",
-      "<cmd>lua require('telescope.builtin').grep_word()<cr>",
-      desc = "[TELESCOPE]:Find word under cursor",
-    },
+    { "<leader>fg", "<cmd>lua require('telescope.builtin').grep_string()<cr>", desc = "[TELESCOPE]:Find under cursor" },
     { "<leader>f'", "<cmd>lua require('telescope.builtin').marks()<cr>", desc = "[TELESCOPE]:Find marks" },
     {
       "<leader>fc",

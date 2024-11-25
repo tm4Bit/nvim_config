@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+---@diagnostic disable-next-line: undefined-field
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system {
     "git",
@@ -12,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-  install = { colorscheme = { require("plugins.colorscheme")[1].name } },
+  install = { colorscheme = { require("plugins.colorscheme").name } },
   ui = { wrap = "true" },
   change_detection = { enabled = false },
   debug = false,
