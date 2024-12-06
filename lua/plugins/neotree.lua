@@ -1,5 +1,6 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
+  enabled = false,
   cmd = "Neotree",
   keys = {
     { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "[NEOTREE]:Toggle explorer" },

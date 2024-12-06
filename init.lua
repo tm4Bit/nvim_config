@@ -10,6 +10,7 @@
 ---- LuaJIT 2.1.1713484068
 --]]
 
+-- Set the runtime path
 if vim.g.vscode then
   -- vscode keymaps and options for Neovim plugin
   require "code.keymaps"
@@ -29,4 +30,5 @@ else
   vim.cmd "colorscheme catppuccin-macchiato" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
   -- vim.cmd "colorscheme rose-pine"
   -- vim.cmd "colorscheme tokyonight"
+  -- vim.cmd "colorscheme gruvbox"
 end

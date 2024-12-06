@@ -1,5 +1,5 @@
-local M = { -- Collection of various small independent plugins/modules
-  "echasnovski/mini.nvim",
+local M = {
+  "echasnovski/mini.nvim", -- Collection of various small independent plugins/modules
   event = "VeryLazy",
   config = function()
     local get_icon = require("utils.icons").get_icon
