@@ -65,43 +65,43 @@ autocmd("BufWinEnter", {
   end,
 })
 
-local dashboard = require "alpha.themes.dashboard"
-local alpha_settings = autogroup("alpha_footer", { clear = true })
-vim.api.nvim_create_autocmd("UIEnter", {
-  desc = "Configure Alpha footer",
-  group = alpha_settings,
-  callback = function()
-    local get_icon = require("utils.icons").get_icon
-    local stats = require("lazy").stats()
-    local ms = string.format("%.2f", stats.startuptime)
-    dashboard.section.footer.val = {
-      " ",
-      " ",
-      " ",
-      get_icon("Bolt", 1)
-        .. "Neovim loaded "
-        .. stats.loaded
-        .. "/"
-        .. stats.count
-        .. " plugins in "
-        .. ms
-        .. "ms "
-        .. get_icon "Clock",
-    }
-    dashboard.section.footer.opts.hl = "NonText"
-    pcall(cmd.AlphaRedraw)
-  end,
-})
+-- local dashboard = require "alpha.themes.dashboard"
+-- local alpha_settings = autogroup("alpha_footer", { clear = true })
+-- vim.api.nvim_create_autocmd("UIEnter", {
+--   desc = "Configure Alpha footer",
+--   group = alpha_settings,
+--   callback = function()
+--     local get_icon = require("utils.icons").get_icon
+--     local stats = require("lazy").stats()
+--     local ms = string.format("%.2f", stats.startuptime)
+--     dashboard.section.footer.val = {
+--       " ",
+--       " ",
+--       " ",
+--       get_icon("Bolt", 1)
+--         .. "Neovim loaded "
+--         .. stats.loaded
+--         .. "/"
+--         .. stats.count
+--         .. " plugins in "
+--         .. ms
+--         .. "ms "
+--         .. get_icon "Clock",
+--     }
+--     dashboard.section.footer.opts.hl = "NonText"
+--     pcall(cmd.AlphaRedraw)
+--   end,
+-- })
 
-autocmd({ "User" }, {
-  desc = "Disable statusline for alpha",
-  group = alpha_settings,
-  pattern = "AlphaReady",
-  callback = function()
-    vim.b.ministatusline_disable = true
-    vim.b.miniindentscope_disable = true
-  end,
-})
+-- autocmd({ "User" }, {
+--   desc = "Disable statusline for alpha",
+--   group = alpha_settings,
+--   pattern = "AlphaReady",
+--   callback = function()
+--     vim.b.ministatusline_disable = true
+--     vim.b.miniindentscope_disable = true
+--   end,
+-- })
 
 autocmd("FileType", {
   desc = "Set wordwrap and spell checking in git and markdown files",
