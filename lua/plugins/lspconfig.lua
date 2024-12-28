@@ -128,8 +128,8 @@ function M.config()
   }
   -- Attach Angular LSP
   local ng_lib =
-    "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/lib/node_modules/@angular/language-server"
-  local ng_bin = "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/bin/ngserver"
+    "/home/tma/.asdf/installs/nodejs/20.15.1/lib/node_modules/@angular/language-server"
+  local ng_bin = "/home/tma/.asdf/installs/nodejs/20.15.1/bin/ngserver"
   local cmd = { ng_bin, "--stdio", "--tsProbeLocations", ng_lib, "--ngProbeLocations", ng_lib }
 
   require("lspconfig").angularls.setup {
