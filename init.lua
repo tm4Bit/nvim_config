@@ -28,4 +28,4 @@ require "highlight"
 -- vim.cmd "colorscheme rose-pine"
 -- vim.cmd "colorscheme tokyonight"
 -- vim.cmd "colorscheme gruvbox"
-vim.cmd "colorscheme github_dark_default" -- github_light_default, github_dark_default
+vim.cmd "colorscheme github_dark_default" -- github_light_default, github_dark_default, github_dark
