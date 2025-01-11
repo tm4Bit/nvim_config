@@ -24,7 +24,6 @@ else
   require "keymaps"
   require "lazy_init"
   require "autocommands"
-  require "terminal"
   require "highlight"
 
   vim.cmd "colorscheme catppuccin-macchiato" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
