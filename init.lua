@@ -10,6 +10,10 @@
 ---- LuaJIT 2.1.1713484068
 --]]
 
+if vim.g.vscode then
+	return
+end
+
 -- setup colorscheme
 -- vim.g.colorscheme = "catppuccin"
 -- vim.g.colorscheme = "rose-pine"
