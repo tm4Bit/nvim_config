@@ -19,7 +19,8 @@ local M = {
       return "%2l:%-2v"
     end
     statusline.section_filename = function()
-      return get_icon("File", 1) .. "%f%r"
+      local modified = vim.bo.modified
+      return get_icon("File", 1) .. "%f%r" .. " " .. (modified and get_icon("Modified", 1) or "")
     end
   end,
 }
