@@ -65,7 +65,7 @@ autocmd("BufWinEnter", {
   end,
 })
 
-local dashboard = require "alpha.themes.dashboard"
+--[[ local dashboard = require "alpha.themes.dashboard"
 local alpha_settings = autogroup("alpha_footer", { clear = true })
 vim.api.nvim_create_autocmd("UIEnter", {
   desc = "Configure Alpha footer",
@@ -91,9 +91,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
     dashboard.section.footer.opts.hl = "NonText"
     pcall(cmd.AlphaRedraw)
   end,
-})
+}) ]]
 
-autocmd({ "User" }, {
+--[[ autocmd({ "User" }, {
   desc = "Disable statusline for alpha",
   group = alpha_settings,
   pattern = "AlphaReady",
@@ -101,7 +101,7 @@ autocmd({ "User" }, {
     vim.b.ministatusline_disable = true
     vim.b.miniindentscope_disable = true
   end,
-})
+}) ]]
 
 autocmd("FileType", {
   desc = "Set wordwrap and spell checking in git and markdown files",

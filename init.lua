@@ -25,7 +25,7 @@ require "terminal"
 require "highlight"
 
 -- vim.cmd "colorscheme catppuccin-macchiato" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-vim.cmd "colorscheme github_dark" -- github_dark_default
+vim.cmd "colorscheme github_dark_default" -- github_dark_default
 -- vim.cmd "colorscheme rose-pine"
 -- vim.cmd "colorscheme tokyonight"
 -- vim.cmd "colorscheme kanagawa"
