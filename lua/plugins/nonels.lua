@@ -19,16 +19,16 @@ function M.config()
   null_ls.setup {
     debug = false,
     sources = {
-      require("none-ls.diagnostics.eslint_d").with {
-        condition = function(utils)
-          return utils.root_has_file { ".eslintrc.json", ".eslintrc.js", "eslint.config.js" }
-        end,
-      },
-      require("none-ls.formatting.eslint_d").with {
-        condition = function(utils)
-          return utils.root_has_file { ".eslintrc.json", ".eslintrc.js", "eslint.config.js" }
-        end,
-      },
+      -- require("none-ls.diagnostics.eslint_d").with {
+      --   condition = function(utils)
+      --     return utils.root_has_file { ".eslintrc.json", ".eslintrc.js", "eslint.config.js" }
+      --   end,
+      -- },
+      -- require("none-ls.formatting.eslint_d").with {
+      --   condition = function(utils)
+      --     return utils.root_has_file { ".eslintrc.json", ".eslintrc.js", "eslint.config.js" }
+      --   end,
+      -- },
       formatting.prettierd.with {
         extra_filetypes = { "toml", "astro" },
       },
