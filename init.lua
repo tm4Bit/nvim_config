@@ -10,6 +10,12 @@
 ---- LuaJIT 2.1.1713484068
 --]]
 
+if vim.g.vscode then
+  require "code.keymaps"
+  require "code.options"
+  return
+end
+
 -- vim.g.colorscheme = "catppuccin"
 vim.g.colorscheme = "github-theme"
 -- vim.g.colorscheme = "rose-pine"
