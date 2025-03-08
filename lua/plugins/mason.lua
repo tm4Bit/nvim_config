@@ -26,7 +26,7 @@ function M.config(_, opts)
   if not status_ok then
     return
   end
-	local servers = require("utils.servers").servers
+  local servers = require("utils.servers").servers
 
   mason.setup(opts)
   require("mason-lspconfig").setup {

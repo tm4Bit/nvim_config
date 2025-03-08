@@ -16,11 +16,11 @@ if vim.g.vscode then
   return
 end
 
--- vim.g.colorscheme = "catppuccin"
-vim.g.colorscheme = "github-theme"
--- vim.g.colorscheme = "rose-pine"
--- vim.g.colorscheme = "tokyonight"
--- vim.g.colorscheme = "kanagawa"
+-- Set global variables
+vim.g.copilot_auto_trigger = false
+
+-- names: "catppuccin" | "github-theme" | "rose-pine" | "tokyonight" | "kanagawa"
+vim.g.colorscheme = "tokyonight"
 
 -- Require main files
 require "options"
@@ -30,8 +30,5 @@ require "autocommands"
 require "terminal"
 require "highlight"
 
--- vim.cmd "colorscheme catppuccin-macchiato" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-vim.cmd "colorscheme github_dark_default" -- github_dark_default
--- vim.cmd "colorscheme rose-pine"
--- vim.cmd "colorscheme tokyonight"
--- vim.cmd "colorscheme kanagawa"
+-- themes: "catppuccin-macchiato" | "github_dark" | "github_dark_default" | "rose-pine" | "tokyonight" | "kanagawa"
+vim.cmd "colorscheme tokyonight" -- github_dark_default

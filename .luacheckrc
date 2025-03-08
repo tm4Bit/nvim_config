@@ -2,6 +2,7 @@
 globals = {
   "vim",
   "bit",
+  "Snacks",
 }
 
 read_globals = {

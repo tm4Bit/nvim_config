@@ -61,10 +61,10 @@ M.config = function()
   -- Map the keymap for FormatEnable and FormatDisable
   map("n", "<localleader>tf", function()
     if vim.g.disable_autoformat or vim.b.disable_autoformat then
-      print "[COMFORM] Format on save on!"
+      Snacks.notify "[COMFORM] Format on save on!"
       vim.cmd "FormatEnable"
     else
-      print "[COMFORM] Format on save off!"
+      Snacks.notify "[COMFORM] Format on save off!"
       vim.cmd "FormatDisable"
     end
   end, { desc = "Toggle autoformat" })
