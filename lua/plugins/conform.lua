@@ -22,8 +22,9 @@ M.config = function()
       html = { "prettierd", stop_after_first = true },
       css = { "prettierd", stop_after_first = true },
       scss = { "prettierd", stop_after_first = true },
-      php = { "phpcsfixer", stop_after_first = true },
-      -- blade = { "blade-formatter", stop_after_first = true },
+      php = { "pint", stop_after_first = true },
+      -- blade = { "blade-formatter", stop_after_first = true }
+      -- blade = { "prettierd", stop_after_first = true },
       -- Comform will run multiple formatters sequentially
       go = { "gofumpt", "goimports" },
     },

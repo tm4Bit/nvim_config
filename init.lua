@@ -11,8 +11,18 @@
 --]]
 
 if vim.g.vscode then
-  require "code.keymaps"
+  -- require "code.keymaps"
   require "code.options"
+  local autocmd = vim.api.nvim_create_autocmd
+  local autogroup = vim.api.nvim_create_augroup
+  autocmd("TextYankPost", {
+    desc = "Configure highlight group and timeout for yank command",
+    group = autogroup("highlightyank", { clear = true }),
+    pattern = "*",
+    callback = function()
+      vim.highlight.on_yank { higroup = "IncSearch", timeout = 150 }
+    end,
+  })
   return
 end
 
