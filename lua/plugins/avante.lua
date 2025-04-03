@@ -11,10 +11,31 @@ local M = {
     --- The below dependencies are optional,
     "echasnovski/mini.pick",
     "nvim-telescope/telescope.nvim",
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "ibhagwan/fzf-lua", -- for file_selector provider fzf
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua",
+    {
+      "saghen/blink.cmp",
+      dependencies = {
+        "Kaiser-Yang/blink-cmp-avante",
+        -- ... Other dependencies
+      },
+      opts = {
+        sources = {
+          -- Add 'avante' to the list
+          default = { "avante", "lsp", "path", "snippets", "buffer" },
+          providers = {
+            avante = {
+              module = "blink-cmp-avante",
+              name = "Avante",
+              opts = {
+                -- options for blink-cmp-avante
+              },
+            },
+          },
+        },
+      },
+    },
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",

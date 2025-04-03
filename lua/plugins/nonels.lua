@@ -32,6 +32,7 @@ function M.config()
       formatting.prettierd.with {
         extra_filetypes = { "toml", "astro" },
       },
+      -- formatting.blade_formatter,
 
       -- Lua
       formatting.stylua,

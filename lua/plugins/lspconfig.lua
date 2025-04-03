@@ -2,7 +2,7 @@ local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
     "folke/trouble.nvim",
     "RRethy/vim-illuminate",
   },
@@ -16,10 +16,10 @@ function M.config()
   end
 
   -- cmp
-  local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if not cmp_nvim_lsp_status_ok then
-    return
-  end
+  -- local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  -- if not cmp_nvim_lsp_status_ok then
+  --   return
+  -- end
 
   -- illuminate setup
   local denylist = require "utils.lsp.illuminate-denylist"
@@ -33,8 +33,7 @@ function M.config()
   -- capabilities
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-
+  capabilities = require("blink.cmp").get_lsp_capabilities()
   ---------------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------------
@@ -81,10 +80,10 @@ function M.config()
   ---------------------------------------------------------------------------------------------------------------------
   -- Blade
   ---------------------------------------------------------------------------------------------------------------------
-  local configs = require "lspconfig.configs"
+  -- local configs = require "lspconfig.configs"
 
   -- Configure it
-  if not configs.blade then
+  --[[ if not configs.blade then
     configs.blade = {
       default_config = {
         -- Path to the executable: laravel-dev-generators
@@ -102,7 +101,7 @@ function M.config()
   lspconfig.blade.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  } ]]
   ---------------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------------
 
@@ -129,6 +128,7 @@ function M.config()
       "vue",
       "htmlangular",
       "php",
+      "blade",
     },
   }
   ---------------------------------------------------------------------------------------------------------------------
@@ -137,14 +137,14 @@ function M.config()
   ---------------------------------------------------------------------------------------------------------------------
   -- Phpactor
   ---------------------------------------------------------------------------------------------------------------------
-  require("lspconfig").phpactor.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    init_options = {
-      ["language_server_phpstan.enabled"] = false,
-      ["language_server_psalm.enabled"] = false,
-    },
-  }
+  -- require("lspconfig").phpactor.setup {
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   init_options = {
+  --     ["language_server_phpstan.enabled"] = false,
+  --     ["language_server_psalm.enabled"] = false,
+  --   },
+  -- }
   ---------------------------------------------------------------------------------------------------------------------
   ---------------------------------------------------------------------------------------------------------------------
 

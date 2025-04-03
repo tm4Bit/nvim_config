@@ -12,6 +12,15 @@ autocmd({ "FileType" }, {
   end,
 })
 
+autocmd("FileType", {
+  desc = "Disable signcolumn in Avante",
+  group = autogroup("avante_options", { clear = true }),
+  pattern = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
+  callback = function()
+    vim.opt.colorcolumn = ""
+  end,
+})
+
 autocmd({ "FileType" }, {
   desc = "Change some vim.opt in lua files",
   group = autogroup("tma-lua-options", { clear = true }),
@@ -110,6 +119,7 @@ autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = false
     vim.opt_local.spell = true
+    vim.opt_local.colorcolumn = ""
   end,
 })
 
