@@ -36,7 +36,7 @@ local M = {
         },
       },
       ghost_text = {
-        enabled = true,
+        enabled = false,
       },
     },
 

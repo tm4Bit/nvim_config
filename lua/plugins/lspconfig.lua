@@ -15,12 +15,6 @@ function M.config()
     return
   end
 
-  -- cmp
-  -- local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  -- if not cmp_nvim_lsp_status_ok then
-  --   return
-  -- end
-
   -- illuminate setup
   local denylist = require "utils.lsp.illuminate-denylist"
   require("illuminate").configure(denylist)
@@ -78,34 +72,6 @@ function M.config()
   ---------------------------------------------------------------------------------------------------------------------
 
   ---------------------------------------------------------------------------------------------------------------------
-  -- Blade
-  ---------------------------------------------------------------------------------------------------------------------
-  -- local configs = require "lspconfig.configs"
-
-  -- Configure it
-  --[[ if not configs.blade then
-    configs.blade = {
-      default_config = {
-        -- Path to the executable: laravel-dev-generators
-        cmd = { "/home/tma/laravel-dev-tools/builds/laravel-dev-tools", "lsp", "-vvv" },
-        filetypes = { "blade" },
-        root_dir = function(fname)
-          return lspconfig.util.find_git_ancestor(fname)
-        end,
-        settings = {},
-      },
-    }
-  end
-
-  -- Set it up
-  lspconfig.blade.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  } ]]
-  ---------------------------------------------------------------------------------------------------------------------
-  ---------------------------------------------------------------------------------------------------------------------
-
-  ---------------------------------------------------------------------------------------------------------------------
   -- emmet_ls
   ---------------------------------------------------------------------------------------------------------------------
   lspconfig.emmet_ls.setup {
@@ -135,22 +101,9 @@ function M.config()
   ---------------------------------------------------------------------------------------------------------------------
 
   ---------------------------------------------------------------------------------------------------------------------
-  -- Phpactor
-  ---------------------------------------------------------------------------------------------------------------------
-  -- require("lspconfig").phpactor.setup {
-  --   on_attach = on_attach,
-  --   capabilities = capabilities,
-  --   init_options = {
-  --     ["language_server_phpstan.enabled"] = false,
-  --     ["language_server_psalm.enabled"] = false,
-  --   },
-  -- }
-  ---------------------------------------------------------------------------------------------------------------------
-  ---------------------------------------------------------------------------------------------------------------------
-
-  ---------------------------------------------------------------------------------------------------------------------
   -- Angular
   ---------------------------------------------------------------------------------------------------------------------
+  --  WARNING: Change the path to `ng_lib` and `ng_bin`, if needed
   local ng_lib =
     "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/lib/node_modules/@angular/language-server"
   local ng_bin = "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/bin/ngserver"
@@ -178,6 +131,7 @@ function M.config()
   ---------------------------------------------------------------------------------------------------------------------
   -- Astro
   ---------------------------------------------------------------------------------------------------------------------
+  --  WARNING: Change the path to `astro_bin`, if needed
   local astro_bin = "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/bin/astro-ls"
   local astro_cmd = { astro_bin, "--stdio" }
 

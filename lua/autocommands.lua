@@ -2,6 +2,16 @@ local autocmd = vim.api.nvim_create_autocmd
 local autogroup = vim.api.nvim_create_augroup
 local cmd = vim.cmd
 
+autocmd("FileType", {
+  desc = "Change Tab width for certain filetypes",
+  group = autogroup("tma-tab-options", { clear = true }),
+  pattern = { "php" },
+  callback = function()
+    vim.opt.shiftwidth = 4
+    vim.opt.tabstop = 4
+  end,
+})
+
 autocmd({ "FileType" }, {
   desc = "Open help in a vertical buffer",
   group = autogroup("tma-help-win", { clear = true }),
