@@ -30,7 +30,7 @@ function M.config()
       --   end,
       -- },
       formatting.prettierd.with {
-        extra_filetypes = { "toml", "astro" },
+        extra_filetypes = { "toml", "astro", "blade" },
       },
       -- formatting.blade_formatter,
 

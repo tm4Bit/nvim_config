@@ -2,6 +2,10 @@ local M = {
   "saghen/blink.cmp",
   dependencies = { "rafamadriz/friendly-snippets" },
   version = "1.*",
+  event = {
+    "InsertEnter",
+    "CmdlineEnter",
+  },
   opts = {
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
     -- 'super-tab' for mappings similar to vscode (tab to accept)

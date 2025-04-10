@@ -3,6 +3,15 @@ local autogroup = vim.api.nvim_create_augroup
 local cmd = vim.cmd
 
 autocmd("FileType", {
+  desc = "Change colorcolumn to 120 for certain filetypes",
+  group = autogroup("tma-colorcolumn", { clear = true }),
+  pattern = { "html", "blade" },
+  callback = function()
+    vim.opt.colorcolumn = "120"
+  end,
+})
+
+autocmd("FileType", {
   desc = "Change Tab width for certain filetypes",
   group = autogroup("tma-tab-options", { clear = true }),
   pattern = { "php" },

@@ -8,6 +8,32 @@ local colorschemes = {
     lazy = false,
     name = "catppuccin",
     priority = 1000,
+    opts = {
+      no_italic = true,
+      term_colors = true,
+      transparent_background = false,
+
+      styles = {
+        comments = {},
+        conditionals = {},
+        loops = {},
+        functions = { "bold" },
+        keywords = { "bold" },
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = { "bold", "italic" },
+      },
+      color_overrides = {
+        mocha = {
+          base = "#000000",
+          mantle = "#000000",
+          crust = "#000000",
+        },
+      },
+    },
   },
   {
     "rebelot/kanagawa.nvim",
@@ -48,7 +74,7 @@ local colorschemes = {
     priority = 1000,
     name = "tokyonight",
     opts = {
-      style = "moon",
+      style = "night",
     },
   },
   {
@@ -57,15 +83,15 @@ local colorschemes = {
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("github-theme").setup { 
-				options = {
-					styles = {
-						comments = 'italic',
-						keywords = 'bold',
-						types = 'italic,bold',
-					}
-				}
-			}
+      require("github-theme").setup {
+        options = {
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          },
+        },
+      }
     end,
   },
 }
