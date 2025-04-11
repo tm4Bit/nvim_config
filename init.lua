@@ -30,7 +30,7 @@ end
 vim.g.copilot_auto_trigger = false
 
 -- names: "catppuccin" | "github-theme" | "rose-pine" | "tokyonight" | "kanagawa"
-vim.g.colorscheme = "tokyonight"
+vim.g.colorscheme = "rose-pine"
 
 -- Require main files
 require "options"
@@ -41,4 +41,4 @@ require "terminal"
 require "highlight"
 
 -- themes: "catppuccin-macchiato" | "github_dark" | "github_dark_default" | "rose-pine" | "tokyonight" | "kanagawa"
-vim.cmd "colorscheme tokyonight" -- github_dark_default
+vim.cmd "colorscheme rose-pine" -- github_dark_default

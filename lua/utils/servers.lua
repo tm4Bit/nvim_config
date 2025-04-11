@@ -8,7 +8,6 @@ M.servers = {
   "html",
   "ts_ls",
   "intelephense",
-  -- "phpactor",
   "svelte",
   "tailwindcss",
   "prismals",

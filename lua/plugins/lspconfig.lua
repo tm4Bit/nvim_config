@@ -55,6 +55,12 @@ function M.config()
       goto continue
     end
 
+    if server == "intelephense" then
+      opts.InitializeParams = {
+        initializationOptions = "/home/tma/intelephense/licence.txt",
+      }
+    end
+
     -- Jump java-language-server config
     if server == "jdtls" then
       goto continue
