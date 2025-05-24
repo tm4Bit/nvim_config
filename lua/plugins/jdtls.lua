@@ -161,7 +161,7 @@ M.opts = function()
       -- 💀
       "-jar",
       -- org.eclipse.equinox.launcher_1.6.500.v20230717-2134
-      "/home/tma/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar",
+      "/home/tma/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar",
 
       -- 💀
       "-configuration",

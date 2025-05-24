@@ -10,11 +10,11 @@ M.config = function()
     return
   end
 
-  local cmp_nvim_lsp = require "cmp_nvim_lsp"
+  -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+  -- capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
   local on_attach = function(client, bufnr)
     local keymap = vim.api.nvim_buf_set_keymap
