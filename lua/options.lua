@@ -32,6 +32,7 @@ opt.signcolumn = "yes"
 opt.conceallevel = 2
 opt.list = true
 opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+opt.guicursor = ""
 
 -- Behavior
 opt.mouse = "a"

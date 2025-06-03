@@ -2,25 +2,6 @@ local autocmd = vim.api.nvim_create_autocmd
 local autogroup = vim.api.nvim_create_augroup
 local cmd = vim.cmd
 
-autocmd("FileType", {
-  desc = "Change colorcolumn to 120 for certain filetypes",
-  group = autogroup("tma-colorcolumn", { clear = true }),
-  pattern = { "html", "blade" },
-  callback = function()
-    vim.opt.colorcolumn = "120"
-  end,
-})
-
-autocmd("FileType", {
-  desc = "Change Tab width for certain filetypes",
-  group = autogroup("tma-tab-options", { clear = true }),
-  pattern = { "php" },
-  callback = function()
-    vim.opt.shiftwidth = 4
-    vim.opt.tabstop = 4
-  end,
-})
-
 autocmd({ "FileType" }, {
   desc = "Open help in a vertical buffer",
   group = autogroup("tma-help-win", { clear = true }),
@@ -37,15 +18,6 @@ autocmd("FileType", {
   pattern = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
   callback = function()
     vim.opt.colorcolumn = ""
-  end,
-})
-
-autocmd({ "FileType" }, {
-  desc = "Change some vim.opt in lua files",
-  group = autogroup("tma-lua-options", { clear = true }),
-  pattern = "lua",
-  callback = function()
-    vim.opt.colorcolumn = "120"
   end,
 })
 
@@ -92,44 +64,6 @@ autocmd("BufWinEnter", {
     end
   end,
 })
-
---[[ local dashboard = require "alpha.themes.dashboard"
-local alpha_settings = autogroup("alpha_footer", { clear = true })
-vim.api.nvim_create_autocmd("UIEnter", {
-  desc = "Configure Alpha footer",
-  group = alpha_settings,
-  callback = function()
-    local get_icon = require("utils.icons").get_icon
-    local stats = require("lazy").stats()
-    local ms = string.format("%.2f", stats.startuptime)
-    dashboard.section.footer.val = {
-      " ",
-      " ",
-      " ",
-      get_icon("Bolt", 1)
-        .. "Neovim loaded "
-        .. stats.loaded
-        .. "/"
-        .. stats.count
-        .. " plugins in "
-        .. ms
-        .. "ms "
-        .. get_icon "Clock",
-    }
-    dashboard.section.footer.opts.hl = "NonText"
-    pcall(cmd.AlphaRedraw)
-  end,
-}) ]]
-
---[[ autocmd({ "User" }, {
-  desc = "Disable statusline for alpha",
-  group = alpha_settings,
-  pattern = "AlphaReady",
-  callback = function()
-    vim.b.ministatusline_disable = true
-    vim.b.miniindentscope_disable = true
-  end,
-}) ]]
 
 autocmd("FileType", {
   desc = "Set wordwrap and spell checking in git and markdown files",

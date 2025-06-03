@@ -5,12 +5,12 @@ local M = {
   opts = {
     keymaps = {
       ["<C-c>"] = false,
-      ["<leader>e"] = "actions.close",
+      ["<leader>o"] = "actions.close",
     },
   },
   keys = {
     {
-      "<leader>e",
+      "<leader>o",
       "<cmd>Oil<cr>", -- Add the flag --float to open in a float window
       desc = "[OIL]:Open",
     },

@@ -58,6 +58,15 @@ M.config = function()
         show_help = "?",
       },
     },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "<leader>tss", -- set to `false` to disable one of the mappings
+        node_incremental = "<leader>tni",
+        scope_incremental = "<leader>tsi",
+        node_decremental = "<leader>tnd",
+      },
+    },
   }
 
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
