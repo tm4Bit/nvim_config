@@ -22,6 +22,11 @@ local M = {
       local modified = vim.bo.modified
       return get_icon("File", 1) .. "%f%r" .. " " .. (modified and get_icon("Modified", 1) or "")
     end
+    local diff = require "mini.diff"
+    diff.setup {
+      -- Disabled by default
+      source = diff.gen_source.none(),
+    }
   end,
 }
 

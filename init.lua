@@ -10,6 +10,7 @@
 ---- LuaJIT 2.1.1713484068
 --]]
 
+-- VSCode-specific configuration
 if vim.g.vscode then
   -- require "code.keymaps"
   require "code.options"
@@ -26,7 +27,7 @@ if vim.g.vscode then
   return
 end
 
--- Set global variables
+-- Global variables
 vim.g.copilot_auto_trigger = false
 
 -- names: "catppuccin" | "github-theme" | "rose-pine" | "tokyonight" | "kanagawa"
