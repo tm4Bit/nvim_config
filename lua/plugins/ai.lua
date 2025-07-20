@@ -22,6 +22,7 @@ return {
   },
   opts = {},
   config = function(_, opts)
+    local map = require("utils.map").map
     require("codecompanion").setup(opts)
 
     local progress = require "fidget.progress"
@@ -52,5 +53,10 @@ return {
         end
       end,
     })
+
+    map("n", "<leader>cc", "<cmd>CodeCompanion<cr>", { desc = "Code Companion" })
+    map("n", "<leader>cC", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle Code Chat" })
+    map("n", "<leader>ca", "<cmd>CodeCompanionActions<cr>", { desc = "Render Code Companion" })
+    map("v", "<leader>ci", ":CodeCompanion ", { desc = "Inline Code Companion" })
   end,
 }

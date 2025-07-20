@@ -52,7 +52,7 @@ M.config = function()
 
   -- keymaps
   local map = require("utils.map").map
-  map("n", "<leader>ct", function()
+  map("n", "<localleader>tc", function()
     if not vim.g.copilot_auto_trigger then
       Snacks.notify "Copilot auto suggestion ON!"
       vim.g.copilot_auto_trigger = true
