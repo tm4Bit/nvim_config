@@ -42,7 +42,7 @@ local M = {
       desc = "Notification History",
     },
     {
-      "<leader>bd",
+      "<localleader>x",
       function()
         Snacks.bufdelete()
       end,
