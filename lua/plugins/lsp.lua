@@ -41,19 +41,22 @@ return {
     require("illuminate").configure(denylist)
 
     local get_icon = require("utils.icons").get_icon
-    local signs = {
-      { name = "DiagnosticSignError", text = get_icon("BoldError", 1) },
-      { name = "DiagnosticSignWarn", text = get_icon("BoldWarning", 1) },
-      { name = "DiagnosticSignHint", text = get_icon("BoldHint", 1) },
-      { name = "DiagnosticSignInfo", text = get_icon("BoldInformation", 1) },
-    }
-    for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-    end
-
     vim.diagnostic.config {
       virtual_text = true,
-      signs = { active = signs },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = get_icon("BoldError", 1),
+          [vim.diagnostic.severity.WARN] = get_icon("BoldWarning", 1),
+          [vim.diagnostic.severity.HINT] = get_icon("BoldHint", 1),
+          [vim.diagnostic.severity.INFO] = get_icon("BoldInformation", 1),
+        },
+        numhl = {
+          "DiagnosticSignError",
+          "DiagnosticSignWarn",
+          "DiagnosticSignHint",
+          "DiagnosticSignInfo",
+        },
+      },
       update_in_insert = true,
       underline = true,
       severity_sort = true,
@@ -67,10 +70,6 @@ return {
         suffix = "",
       },
     }
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-    vim.lsp.handlers["textDocument/signatureHelp"] =
-      vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("tma_lsp_attach", { clear = true }),
@@ -90,7 +89,9 @@ return {
         map_key("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
         map_key("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         map_key("gtd", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype [D]efinition")
-        map_key("gh", vim.lsp.buf.hover, "[G]oto [H]over Documentation")
+        map_key("gh", function()
+          vim.lsp.buf.hover { border = "single" }
+        end, "[G]oto [H]over Documentation")
         map_key("gl", vim.diagnostic.open_float, "Float Diagnostic")
 
         map_key("<leader>la", vim.lsp.buf.code_action, "[L]SP code [A]ction", { "n", "v" })

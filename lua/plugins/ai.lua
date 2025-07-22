@@ -20,7 +20,56 @@ return {
       },
     },
   },
-  opts = {},
+  opts = {
+    display = {
+      chat = {
+        auto_scroll = false,
+        icons = {
+          buffer_pin = " ",
+          buffer_watch = "󰈈 ",
+        },
+        debug_window = {
+          width = vim.o.columns - 5,
+          height = vim.o.lines - 2,
+        },
+        window = {
+          layout = "float",
+          position = nil,
+          border = "single",
+          height = 0.95,
+          width = 0.65,
+          relative = "editor",
+          full_height = true,
+          sticky = false,
+          opts = {
+            breakindent = true,
+            cursorcolumn = false,
+            cursorline = false,
+            foldcolumn = "0",
+            linebreak = true,
+            list = false,
+            numberwidth = 1,
+            signcolumn = "no",
+            spell = false,
+            wrap = true,
+          },
+        },
+      },
+    },
+    strategies = {
+      chat = {
+        roles = {
+          ---The header name for the LLM's messages
+          llm = function(adapter)
+            return "CodeCompanion (" .. adapter.formatted_name .. ")"
+          end,
+          ---The header name for your messages
+          ---@type string
+          user = "tma",
+        },
+      },
+    },
+  },
   config = function(_, opts)
     local map = require("utils.map").map
     require("codecompanion").setup(opts)
@@ -54,9 +103,25 @@ return {
       end,
     })
 
-    map("n", "<leader>cc", "<cmd>CodeCompanion<cr>", { desc = "Code Companion" })
-    map("n", "<leader>cC", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle Code Chat" })
-    map("n", "<leader>ca", "<cmd>CodeCompanionActions<cr>", { desc = "Render Code Companion" })
-    map("v", "<leader>ci", ":CodeCompanion ", { desc = "Inline Code Companion" })
+    map("n", "<localleader>c", "<cmd>CodeCompanion<cr>", { desc = "Code Companion" })
+    map(
+      { "n", "v" },
+      "<leader>cc",
+      "<cmd>CodeCompanionChat Toggle<cr>",
+      { noremap = true, silent = true, desc = "Code Companion Toggle Chat" }
+    )
+    map(
+      { "n", "v" },
+      "<leader>ca",
+      "<cmd>CodeCompanionActions<cr>",
+      { noremap = true, silent = true, desc = "Code Companion Actions" }
+    )
+    map("v", "<leader>ci", ":CodeCompanion ", { desc = "Code Companion Inline" })
+    map(
+      "v",
+      "ga",
+      "<cmd>CodeCompanionChat Add<cr>",
+      { noremap = true, silent = true, desc = "Code Companion Add snippet to chat" }
+    )
   end,
 }
