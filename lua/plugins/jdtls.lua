@@ -9,6 +9,9 @@ M.opts = function()
   local workspace_dir = "/home/tma/.local/share/nvim/site/java/workspace-root/" .. project_name
   os.execute("mkdir " .. workspace_dir)
 
+  local mason_path = vim.fn.stdpath "data" .. "/mason"
+  local jdtls_launcher = vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
+
   -- get the current OS
   local os
   if vim.fn.has "mac" == 1 then
@@ -141,6 +144,7 @@ M.opts = function()
     require("illuminate").on_attach(client)
   end
 
+  -- Snacks.pr
   local defaults = {
     cmd = {
       -- 💀
@@ -161,7 +165,7 @@ M.opts = function()
       -- 💀
       "-jar",
       -- org.eclipse.equinox.launcher_1.6.500.v20230717-2134
-      "/home/tma/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar",
+      jdtls_launcher,
 
       -- 💀
       "-configuration",
@@ -174,9 +178,20 @@ M.opts = function()
     root_dir = require("jdtls.setup").find_root { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", ".project" },
 
     settings = {
-      java = {},
+      java = {
+        -- Informa onde encontrar os fontes (.java)
+        project = {
+          sourcePaths = { "src" },
+        },
+        -- Informa onde colocar e encontrar os compilados (.class)
+        -- Isso ajuda o servidor a entender o ciclo de vida do build
+        outputPath = "bin",
+        -- Configuração de formatação, opcional mas recomendado
+        format = {
+          enabled = false, -- Desabilitado para não conflitar com o conform.nvim
+        },
+      },
     },
-
     init_options = {
       bundles = {},
     },

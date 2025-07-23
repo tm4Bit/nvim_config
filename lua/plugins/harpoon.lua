@@ -19,56 +19,56 @@ local M = {
       desc = "[HARPOON]:Open",
     },
     {
-      "<localleader>a",
+      "<F5>",
       function()
         require("harpoon"):list():select(1)
       end,
       desc = "[HARPOON]:1",
     },
     {
-      "<localleader>s",
+      "<F6>",
       function()
         require("harpoon"):list():select(2)
       end,
       desc = "[HARPOON]:2",
     },
     {
-      "<localleader>d",
+      "<F7>",
       function()
         require("harpoon"):list():select(3)
       end,
       desc = "[HARPOON]:3",
     },
     {
-      "<localleader>f",
+      "<F8>",
       function()
         require("harpoon"):list():select(4)
       end,
       desc = "[HARPOON]:4",
     },
     {
-      "<localleader>q",
+      "<F9>",
       function()
         require("harpoon"):list():select(5)
       end,
       desc = "[HARPOON]:5",
     },
     {
-      "<localleader>w",
+      "<F10>",
       function()
         require("harpoon"):list():select(6)
       end,
       desc = "[HARPOON]:6",
     },
     {
-      "<localleader>e",
+      "<F11>",
       function()
         require("harpoon"):list():select(7)
       end,
       desc = "[HARPOON]:7",
     },
     {
-      "<localleader>r",
+      "<F12>",
       function()
         require("harpoon"):list():select(8)
       end,
