@@ -6,10 +6,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "j-hui/fidget.nvim",
     {
-      "MeanderingProgrammer/render-markdown.nvim",
-      ft = { "markdown", "codecompanion" },
-    },
-    {
       "OXY2DEV/markview.nvim",
       ft = { "markdown", "codecompanion" },
       opts = {

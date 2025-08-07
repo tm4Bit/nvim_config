@@ -1,6 +1,7 @@
 local M = {}
 
 local icons = {
+  AI = "",
   Array = "",
   ArrowCircleDown = "",
   ArrowCircleLeft = "",
@@ -54,6 +55,7 @@ local icons = {
   Diff = "",
   DividerLeft = "",
   DividerRight = "",
+  Docker = "󰡨",
   DoubleChevronRight = "»",
   Ellipsis = "",
   EmptyFolder = "",

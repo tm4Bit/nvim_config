@@ -73,6 +73,21 @@ function M.config()
         color = "#fcf003",
         name = "Env_dev",
       },
+      [".aidigestignore"] = {
+        icon = get_icon "AI",
+        color = "#5e25cf",
+        name = "AiDigest",
+      },
+      ["docker-compose.prod.yml"] = {
+        icon = get_icon "Docker",
+        color = "#007acc",
+        name = "DockerComposeProd",
+      },
+      ["docker-compose.dev.yml"] = {
+        icon = get_icon "Docker",
+        color = "#007acc",
+        name = "DockerComposeDev",
+      },
     },
     override_by_extension = {
       ["json"] = {

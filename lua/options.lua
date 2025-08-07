@@ -46,8 +46,10 @@ opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.showcmd = false
 opt.showmode = false
-opt.tabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 2 -- Number of spaces that a <Tab> counts for while editing
+opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
+opt.expandtab = true -- Use spaces instead of tabs
+opt.softtabstop = 2 -- Number of spaces that a <Tab> counts for while editing
 opt.inccommand = "split"
 opt.iskeyword:append "-"
 
