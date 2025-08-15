@@ -70,8 +70,9 @@ autocmd("FileType", {
   group = autogroup("wordwrap_spell", { clear = true }),
   pattern = { "gitcommit", "markdown", "mdx" },
   callback = function()
-    vim.opt_local.wrap = false
-    vim.opt_local.spell = true
+    vim.opt_local.wrap = true
+    vim.opt_local.textwidth = 120
+    vim.opt_local.spell = false
     vim.opt_local.colorcolumn = ""
   end,
 })

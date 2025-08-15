@@ -15,6 +15,7 @@ M.config = function()
       -- Comform will stop after the first
       lua = { "stylua", stop_after_first = true },
       python = { "black", stop_after_first = true },
+      -- ruby = { "rubocop", stop_after_first = true },
       -- javascript = { "prettierd", stop_after_first = true },
       -- javascriptreact = { "prettierd", stop_after_first = true },
       -- typescript = { "prettierd", stop_after_first = true },

@@ -29,6 +29,11 @@ function M.config()
       highlight_grey = "LineNr",
     },
   }
+
+  local Rule = require "nvim-autopairs.rule"
+  autopairs.add_rules {
+    Rule("|", "|", "ruby"),
+  }
 end
 
 return M

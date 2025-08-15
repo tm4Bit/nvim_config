@@ -152,6 +152,7 @@ M.configurations = {
     },
   },
   bashls = {},
+  solargraph = {},
   jsonls = {
     -- Example if you want to enable schema download for jsonls
     -- settings = {
