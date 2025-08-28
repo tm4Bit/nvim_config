@@ -8,6 +8,9 @@ map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Dismiss highlight in sear
 map("n", "<leader>C", "<cmd>e $MYVIMRC<CR>", { desc = "GoTo configuration file" }) -- GoTo configuration file
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", { desc = "[LSP]Format file" }) -- format file
 
+-- tmux_sessionizer
+map("n", "<localleader>ts", "<cmd>silent !tmux neww tmux_sessionizer<CR>", { desc = "[TMUX] Sessionizer launch" })
+
 -- Navigation
 map("n", "]b", "<cmd>bnext<CR>", { desc = "[BUFFER]:Next buffer" })
 map("n", "[b", "<cmd>bprev<CR>", { desc = "[BUFFER]:Previous buffer" })
