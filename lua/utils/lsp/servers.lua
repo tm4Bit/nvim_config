@@ -158,8 +158,6 @@ M.configurations = {
     },
   },
   bashls = {},
-  -- solargraph = {},
-  -- ruby_lsp = {},
   ruby_lsp = {
     settings = {
       rubyLsp = {
