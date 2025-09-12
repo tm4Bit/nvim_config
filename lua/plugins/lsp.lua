@@ -132,7 +132,7 @@ return {
 
     masonlsp.setup {
       ensure_installed = server_names_for_mason,
-      automatic_installation = true,
+      automatic_installation = false,
       automatic_enable = false,
       handlers = {}, -- Manual loop below handles setup
     }

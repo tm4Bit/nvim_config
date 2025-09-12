@@ -1,5 +1,11 @@
 local M = {}
 
+-- A list of servers to exclude from Mason's `ensure_installed`
+-- This allows you to manage their installation manually (e.g., via `gem` or `npm`)
+local mason_exclude = {
+  "ruby_lsp",
+}
+
 -- This table holds the configurations for each LSP server.
 -- Keys are server names (as used by nvim-lspconfig).
 -- Values are tables containing the specific options for that server.
@@ -152,7 +158,17 @@ M.configurations = {
     },
   },
   bashls = {},
-  solargraph = {},
+  -- solargraph = {},
+  -- ruby_lsp = {},
+  ruby_lsp = {
+    settings = {
+      rubyLsp = {
+        features = {
+          rails = true,
+        },
+      },
+    },
+  },
   jsonls = {
     -- Example if you want to enable schema download for jsonls
     -- settings = {
@@ -177,9 +193,18 @@ end
 -- Function to get just the list of server names (for Mason's ensure_installed)
 function M.get_all_server_names()
   local names = {}
-  for server_name, _ in pairs(M.configurations) do
-    table.insert(names, server_name)
+  local excluded_servers = {}
+
+  for _, server in ipairs(mason_exclude) do
+    excluded_servers[server] = true
   end
+
+  for server_name, _ in pairs(M.configurations) do
+    if not excluded_servers[server_name] then
+      table.insert(names, server_name)
+    end
+  end
+
   return names
 end
 
