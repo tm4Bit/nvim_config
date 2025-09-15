@@ -51,8 +51,8 @@ end
 -- Global variables
 vim.g.copilot_auto_trigger = false
 
--- names: "catppuccin" | "github-theme" | "rose-pine" | "tokyonight" | "kanagawa"
-vim.g.colorscheme = "rose-pine"
+-- names: "catppuccin" | "github-theme" | "rose-pine" | "tokyonight" | "kanagawa" | "matteblack" | "fleet" | "vscode" | "darkplus"
+vim.g.colorscheme = "darkplus"
 
 -- Require main files
 require "options"
@@ -62,5 +62,6 @@ require "autocommands"
 require "terminal"
 require "highlight"
 
--- themes: "catppuccin-macchiato" | "github_dark" | "github_dark_default" | "rose-pine" | "tokyonight" | "kanagawa"
-vim.cmd "colorscheme rose-pine" -- github_dark_default
+-- themes: "catppuccin-macchiato" | "github_dark" | "github_dark_default" | "rose-pine" | "tokyonight" | "kanagawa" |
+--  "matteblack" | "fleet" | "onedarkpro" | "vscode"
+vim.cmd "colorscheme darkplus" -- github_dark_default

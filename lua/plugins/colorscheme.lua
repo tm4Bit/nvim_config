@@ -99,6 +99,36 @@ local colorschemes = {
       }
     end,
   },
+  {
+    "felipeagc/fleet-theme-nvim",
+    name = "fleet",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "tahayvr/matteblack.nvim",
+    name = "matteblack",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "olimorris/onedarkpro.nvim",
+    name = "onedarkpro",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "Mofiqul/vscode.nvim",
+    name = "vscode",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "lunarvim/darkplus.nvim",
+    name = "darkplus",
+    lazy = false,
+    priority = 1000,
+  },
 }
 
 for _, v in pairs(colorschemes) do
