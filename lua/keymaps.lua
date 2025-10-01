@@ -7,6 +7,7 @@ map("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "[LSP]:Restart server" })
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Dismiss highlight in search" }) -- Clear highlight
 map("n", "<leader>C", "<cmd>e $MYVIMRC<CR>", { desc = "GoTo configuration file" }) -- GoTo configuration file
 map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", { desc = "[LSP]Format file" }) -- format file
+map("n", "<leader>a", "<cmd>enew<cr>", { desc = "Create new file" })
 
 -- Navigation
 map("n", "]b", "<cmd>bnext<CR>", { desc = "[BUFFER]:Next buffer" })
