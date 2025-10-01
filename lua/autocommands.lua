@@ -13,6 +13,15 @@ autocmd({ "FileType" }, {
 })
 
 autocmd("FileType", {
+  desc = "Ruby files settings",
+  group = autogroup("ruby_options", { clear = true }),
+  pattern = "ruby",
+  callback = function()
+    vim.opt.colorcolumn = "120"
+  end,
+})
+
+autocmd("FileType", {
   desc = "Disable signcolumn in Avante",
   group = autogroup("avante_options", { clear = true }),
   pattern = { "Avante", "AvanteInput", "AvanteSelectedFiles" },
