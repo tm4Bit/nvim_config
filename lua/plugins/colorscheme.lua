@@ -129,6 +129,39 @@ local colorschemes = {
     lazy = false,
     priority = 1000,
   },
+  {
+    "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      terminal_colors = true, -- add neovim terminal colors
+      undercurl = true,
+      underline = true,
+      bold = true,
+      italic = {
+        strings = true,
+        emphasis = true,
+        comments = true,
+        operators = false,
+        folds = true,
+      },
+      strikethrough = true,
+      invert_selection = false,
+      invert_signs = false,
+      invert_tabline = false,
+      inverse = true, -- invert background for search, diffs, statuslines and errors
+      contrast = "", -- can be "hard", "soft" or empty string
+      palette_overrides = {},
+      overrides = {
+        LspReferenceRead = { bg = "#83a598", fg = "#282828", bold = true },
+        LspReferenceWrite = { bg = "#83a598", fg = "#282828", bold = true },
+        LspReferenceText = { bg = "#83a598", fg = "#282828", bold = true },
+      },
+      dim_inactive = false,
+      transparent_mode = false,
+    },
+  },
 }
 
 for _, v in pairs(colorschemes) do
