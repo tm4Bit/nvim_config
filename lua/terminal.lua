@@ -20,9 +20,9 @@ function M.open(cwd)
   if vim.fn.bufexists(M.buffer) == 0 then
     local job_id = nil
     M.buffer = vim.fn.bufnr "%"
-    M.job_id = vim.fn.termopen(vim.o.shell, {
+    M.job_id = vim.fn.jobstart(vim.o.shell, {
+      term = true,
       cwd = cwd or vim.fn.getcwd(),
-      detach = true,
       on_exit = function()
         if M.job_id == job_id then
           M.destroy()
