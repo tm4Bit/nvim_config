@@ -4,7 +4,6 @@ local cmd = vim.cmd
 
 autocmd({ "FileType" }, {
   desc = "Open help in a vertical buffer",
-  group = autogroup("tma-help-win", { clear = true }),
   pattern = "help",
   callback = function()
     vim.cmd.wincmd "L"

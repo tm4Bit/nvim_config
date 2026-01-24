@@ -19,7 +19,7 @@ opt.undofile = true
 -- UI stuff
 opt.guifont = "monospace:h17"
 opt.colorcolumn = "80"
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.hlsearch = true
 opt.showtabline = 0
 opt.termguicolors = true

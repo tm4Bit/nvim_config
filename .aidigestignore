@@ -1,9 +1,0 @@
-doc-configs.txt
-doc-lspconfig.txt
-doc-mason-lspconfig.txt
-doc-mason.txt
-kickstart-nvim-init.lua
-spell/
-.luacheckrc
-.luarc.json
-.stylua.toml

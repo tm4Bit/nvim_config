@@ -36,7 +36,7 @@ map("n", "<M-j>", "V:m '>+1<CR>gv=gv<esc>", { desc = "Move line(s) upwards", sil
 map("n", "<M-k>", "V:m '<-2<CR>gv=gv<esc>", { desc = "Move line(s) downwards", silent = true })
 
 -- NORMAL MODE --
-map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save buffer" })
+map("n", "<leader>w", "<cmd>silent! w<cr>", { desc = "Save buffer" })
 map("n", "<leader>q", "<cmd>confirm q<cr>", { desc = "Quit neovim" })
 map("n", "<localleader>r", "<cmd>source %<cr>", { desc = "Source init.lua" })
 map("n", "Q", "<nop>")

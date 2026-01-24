@@ -5,9 +5,6 @@ local M = {
     local get_icon = require("utils.icons").get_icon
 
     require("mini.ai").setup { n_lines = 500 }
-    require("mini.indentscope").setup {
-      symbol = get_icon "LineLeft",
-    }
     require("mini.surround").setup {}
 
     local statusline = require "mini.statusline"

@@ -15,21 +15,23 @@ M.config = function()
       -- Comform will stop after the first
       lua = { "stylua", stop_after_first = true },
       python = { "black", stop_after_first = true },
+
       -- ruby = { "rubocop", stop_after_first = true },
-      -- javascript = { "prettierd", stop_after_first = true },
-      -- javascriptreact = { "prettierd", stop_after_first = true },
-      -- typescript = { "prettierd", stop_after_first = true },
-      -- typescriptreact = { "prettierd", stop_after_first = true },
-      javascript = { "eslint_d", stop_after_first = true },
-      javascriptreact = { "eslint_d", stop_after_first = true },
-      typescript = { "eslint_d", stop_after_first = true },
-      typescriptreact = { "eslint_d", stop_after_first = true },
+      -- Web Development (Next.js 15 / React)
+      -- Aqui executamos o prettierd PRIMEIRO e depois o eslint_d.
+      -- Note que NÃO usamos 'stop_after_first' aqui para que ambos rodem.
+      javascript = { "prettierd", "eslint" },
+      javascriptreact = { "prettierd", "eslint" },
+      typescript = { "prettierd", "eslint" },
+      typescriptreact = { "prettierd", "eslint" },
+
       html = { "prettierd", stop_after_first = true },
       css = { "prettierd", stop_after_first = true },
       scss = { "prettierd", stop_after_first = true },
+
       php = { "pint", stop_after_first = true },
       blade = { "prettierd", stop_after_first = true },
-      -- blade = { "blade-formatter", stop_after_first = true },
+
       -- Comform will run multiple formatters sequentially
       go = { "gofumpt", "goimports" },
     },

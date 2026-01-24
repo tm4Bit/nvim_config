@@ -4,6 +4,7 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "nvim-telescope/telescope-frecency.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
     "nvim-lua/plenary.nvim",
   },
@@ -124,6 +125,7 @@ M.config = function()
   }
   telescope.load_extension "ui-select"
   telescope.load_extension "fzf"
+  telescope.load_extension "frecency"
 end
 
 return M
