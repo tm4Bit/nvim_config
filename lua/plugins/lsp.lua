@@ -26,7 +26,6 @@ return {
     "RRethy/vim-illuminate",
   },
   config = function()
-    local lspconfig = require "lspconfig"
     local masonlsp = require "mason-lspconfig"
 
     -- Require the server configurations and names from the utility file
@@ -36,6 +35,10 @@ return {
 
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
 
     local denylist = require "utils.lsp.illuminate-denylist"
     require("illuminate").configure(denylist)
@@ -69,6 +72,22 @@ return {
         prefix = "",
         suffix = "",
       },
+    }
+
+    for server_name, server_specific_config in pairs(lsp_servers_config) do
+      -- Skip servers
+      if server_name == "jdtls" or server_name == "clangd" then
+        goto continue
+      end
+
+      vim.lsp.config(server_name, server_specific_config)
+
+      ::continue::
+    end
+
+    masonlsp.setup {
+      ensure_installed = server_names_for_mason,
+      automatic_enable = true,
     }
 
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -129,31 +148,5 @@ return {
         end
       end,
     })
-
-    masonlsp.setup {
-      ensure_installed = server_names_for_mason,
-      automatic_installation = false,
-      automatic_enable = false,
-      handlers = {}, -- Manual loop below handles setup
-    }
-
-    for server_name, server_specific_config in pairs(lsp_servers_config) do
-      -- Skip servers
-      if server_name == "jdtls" or server_name == "clangd" then
-        goto continue
-      end
-
-      -- Start with a deepcopy of the server-specific config from utils/lsp/servers.lua
-      local effective_server_opts = vim.deepcopy(server_specific_config or {})
-      -- Ensure global capabilities are merged correctly.
-      -- Server-specific capabilities (if defined in server_specific_config.capabilities) will take precedence.
-      effective_server_opts.capabilities =
-        vim.tbl_deep_extend("force", vim.deepcopy(capabilities), effective_server_opts.capabilities or {})
-
-      if lspconfig[server_name] then
-        lspconfig[server_name].setup(effective_server_opts)
-      end
-      ::continue::
-    end
   end,
 }

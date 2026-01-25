@@ -1,204 +1,31 @@
 local M = {}
 
--- A list of servers to exclude from Mason's `ensure_installed`
--- This allows you to manage their installation manually (e.g., via `gem` or `npm`)
-local mason_exclude = {
-  "ruby_lsp",
-}
-
 -- This table holds the configurations for each LSP server.
 -- Keys are server names (as used by nvim-lspconfig).
 -- Values are tables containing the specific options for that server.
 M.configurations = {
-  -- Servers handled by dedicated plugins (listed here so Mason can install them)
-  clangd = {
-    -- No lspconfig.setup options here; clangd_extensions.nvim handles it.
-    -- Mason will ensure it's installed if it's in the list passed to ensure_installed.
-  },
-  jdtls = {
-    -- No lspconfig.setup options here; nvim-jdtls handles it.
-  },
-
-  -- Lua
-  lua_ls = {
-    settings = {
-      Lua = {
-        runtime = { version = "LuaJIT" },
-        diagnostics = { globals = { "vim", "spec" } },
-        workspace = {
-          library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.stdpath "config" .. "/lua"] = true,
-          },
-          checkThirdParty = false,
-        },
-        telemetry = { enable = false },
-        hint = {
-          enable = true,
-          arrayIndex = "Disable", -- Copied from your lua/settings/lua_ls.lua
-          await = true,
-          paramName = "All",
-          paramType = false,
-          semicolon = "All",
-          setType = false,
-        },
-        format = { enable = false }, -- From your lua/settings/lua_ls.lua
-      },
-    },
-  },
-
-  -- ESLint LSP (Substituindo o none-ls para evitar erros de JSON)
-  eslint = {
-    settings = {
-      workingDirectory = { mode = "auto" },
-    },
-    -- Forçamos o lspconfig a reconhecer os novos nomes de arquivo como marcadores de raiz
-    root_dir = function(fname)
-      local util = require "lspconfig.util"
-      return util.root_pattern(
-        "eslint.config.js",
-        "eslint.config.mjs",
-        "eslint.config.cjs",
-        ".eslintrc.js",
-        ".eslintrc.cjs",
-        ".eslintrc.json",
-        "package.json",
-        ".git"
-      )(fname)
-    end,
-  },
-  -- TypeScript / JavaScript
-  ts_ls = {
-    -- Content from your previous lua/settings/ts_ls.lua (formerly tsserver.lua)
-    settings = {
-      typescript = {
-        implementationsCodeLens = { enabled = true },
-        referencesCodeLens = { enabled = true, showOnAllFunctions = true },
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = false,
-          includeInlayVariableTypeHints = false,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-          includeInlayPropertyDeclarationTypeHints = false,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = false,
-        },
-      },
-      javascript = {
-        implementationsCodeLens = { enabled = true },
-        referencesCodeLens = { enabled = true, showOnAllFunctions = true },
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = false,
-          includeInlayVariableTypeHints = false,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-          includeInlayPropertyDeclarationTypeHints = false,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = false,
-        },
-      },
-    },
-  },
-
-  -- PHP
-  intelephense = {
-    init_options = {
-      licenceKey = "/home/tma/intelephense/licence.txt", -- Your specific path
-    },
-  },
-
-  -- Web Development Servers
-  cssls = {}, -- Uses defaults + global capabilities
-  html = {}, -- Uses defaults + global capabilities
-  emmet_ls = {
-    filetypes = {
-      "astro",
-      "handlebars",
-      "css",
-      "eruby",
-      "html",
-      "htmldjango",
-      "javascriptreact",
-      "less",
-      "pug",
-      "sass",
-      "scss",
-      "svelte",
-      "typescriptreact",
-      "vue",
-      "htmlangular",
-      "php",
-      "blade",
-    },
-  },
-  tailwindcss = {
-    -- Example: If you had specific settings for tailwindcss
-    -- settings = { tailwindCSS = { includeLanguages = { plaintext = "html" } } }
-  },
+  clangd = {},
+  jdtls = {},
+  lua_ls = require "utils.lsp.configs.lua_lsp",
+  eslint = require "utils.lsp.configs.eslint_lsp",
+  ts_ls = require "utils.lsp.configs.ts_lsp",
+  intelephense = require "utils.lsp.configs.php_lsp",
+  cssls = {},
+  html = {},
+  emmet_ls = require "utils.lsp.configs.emmet_lsp",
+  tailwindcss = {},
   svelte = {},
-  angularls = {
-    cmd = {
-      "/home/tma/.asdf/installs/nodejs/22.16.0/bin/ngserver",
-      "--stdio",
-      "--tsProbeLocations",
-      "/home/tma/.asdf/installs/nodejs/22.16.0/lib/node_modules/@angular/language-server",
-      "--ngProbeLocations",
-      "/home/tma/.asdf/installs/nodejs/22.16.0/lib/node_modules/@angular/language-server",
-    },
-    on_new_config = function(new_config, new_root_dir)
-      local ng_lib_path = "/home/tma/.asdf/installs/nodejs/22.16.0/lib/node_modules/@angular/language-server"
-      new_config.cmd = {
-        "ngserver",
-        "--stdio",
-        "--tsProbeLocations",
-        ng_lib_path .. "," .. new_root_dir,
-        "--ngProbeLocations",
-        ng_lib_path .. "," .. new_root_dir,
-      }
-    end,
-  },
-  astro = {
-    cmd = { "/home/tma/.local/share/fnm/node-versions/v20.15.1/installation/bin/astro-ls", "--stdio" },
-  },
+  angularls = require "utils.lsp.configs.angular_lsp",
+  astro = require "utils.lsp.configs.astro_lsp",
   templ = {},
-
-  -- Other Languages & Tools
   prismals = {},
   marksman = {},
-  pyright = {
-    -- Content from your previous lua/settings/pyright.lua
-    settings = {
-      python = {
-        analysis = {
-          typeCheckingMode = "off",
-        },
-      },
-    },
-  },
+  pyright = require "utils.lsp.configs.python_lsp",
   bashls = {},
-  ruby_lsp = {
-    settings = {
-      rubyLsp = {
-        features = {
-          rails = true,
-        },
-      },
-    },
-  },
-  jsonls = {
-    -- Example if you want to enable schema download for jsonls
-    -- settings = {
-    --   json = {
-    --     schemas = require('schemastore').json.schemas(),
-    --     validate = { enable = true },
-    --   },
-    -- },
-  },
+  ruby_lsp = require "utils.lsp.configs.ruby_lsp",
+  jsonls = {},
   yamlls = {},
   gopls = {},
-  -- Add all other servers from your original list.
   -- For servers needing only default lspconfig behavior + your global capabilities,
   -- an empty table `{}` is sufficient, e.g., `some_other_lsp = {},`
 }
@@ -211,16 +38,9 @@ end
 -- Function to get just the list of server names (for Mason's ensure_installed)
 function M.get_all_server_names()
   local names = {}
-  local excluded_servers = {}
-
-  for _, server in ipairs(mason_exclude) do
-    excluded_servers[server] = true
-  end
 
   for server_name, _ in pairs(M.configurations) do
-    if not excluded_servers[server_name] then
-      table.insert(names, server_name)
-    end
+    table.insert(names, server_name)
   end
 
   return names
