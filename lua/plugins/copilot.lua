@@ -2,6 +2,9 @@ local M = {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
+  dependencies = {
+    "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+  },
 }
 
 M.config = function()
@@ -25,7 +28,8 @@ M.config = function()
       enabled = true,
       auto_trigger = true,
       hide_during_completion = true,
-      debounce = 75,
+      debounce = 15,
+      trigger_on_accept = true,
       keymap = {
         accept = "<C-Down>",
         accept_word = "<C-Up>",
@@ -35,6 +39,27 @@ M.config = function()
         dismiss = "<C-]>",
       },
     },
+    nes = {
+      enabled = false, -- requires copilot-lsp as a dependency
+      auto_trigger = true,
+      keymap = {
+        accept_and_goto = "<C-Left>",
+        accept = false,
+        dismiss = false,
+      },
+    },
+    auth_provider_url = nil, -- URL to authentication provider, if not "https://github.com/"
+    logger = {
+      file = vim.fn.stdpath "log" .. "/copilot-lua.log",
+      file_log_level = vim.log.levels.OFF,
+      print_log_level = vim.log.levels.WARN,
+      trace_lsp = "off", -- "off" | "debug" | "verbose"
+      trace_lsp_progress = false,
+      log_lsp_messages = false,
+    },
+    workspace_folders = {},
+    copilot_model = "",
+    disable_limit_reached_message = false,
     filetypes = {
       yaml = false,
       markdown = true,
