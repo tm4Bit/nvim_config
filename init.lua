@@ -53,7 +53,7 @@ vim.g.copilot_auto_trigger = false
 
 -- names: "catppuccin" | "github-theme" | "rose-pine" | "tokyonight" | "kanagawa" | "matteblack" | "fleet" | "vscode" |
 -- "darkplus" | "gruvbox" | "monokai-pro"
-vim.g.colorscheme = "spinel"
+vim.g.colorscheme = "tokyonight"
 
 -- Require main files
 require "options"
@@ -65,4 +65,4 @@ require "highlight"
 
 -- themes: "catppuccin-macchiato" | "github_dark" | "github_dark_default" | "rose-pine" | "tokyonight" | "kanagawa" |
 --  "matteblack" | "fleet" | "onedarkpro" | "vscode" | "darkplus" | "gruvbox" | "monokai-pro"
-vim.cmd "colorscheme spinel" -- github_dark_default
+vim.cmd "colorscheme tokyonight" -- github_dark_default

@@ -1,12 +1,3 @@
-local M = {
-  "nvim-treesitter/nvim-treesitter",
-  event = "BufReadPre",
-  build = ":TSUpdate",
-  dependencies = {
-    "nvim-treesitter/playground",
-  },
-}
-
 local parsers = {
   "javascript",
   "typescript",
@@ -20,70 +11,53 @@ local parsers = {
   "go",
 }
 
-M.config = function()
-  local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
-  if not status_ok then
-    return
-  end
+return {
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  build = ":TSUpdate",
+  config = function()
+    local treesitter = require "nvim-treesitter"
 
-  local map = require("utils.map").map
+    -- The main branch for Nvim 0.12 no longer uses
+    -- nvim-treesitter.configs or nvim-treesitter/playground modules.
+    treesitter.setup {}
+    treesitter.install(parsers)
 
-  map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<cr>", { desc = "[TS]:Playground toggle" })
-  map("n", "<leader>tuc", "<cmd>TSHighlightCapturesUnderCursor<cr>", { desc = "[TS]:Playground toggle" })
+    vim.api.nvim_create_autocmd("FileType", {
+      group = vim.api.nvim_create_augroup("tma_treesitter", { clear = true }),
+      callback = function(event)
+        pcall(vim.treesitter.start, event.buf)
 
-  treesitter.setup {
-    ensure_installed = parsers,
-    auto_install = true,
-    indent = {
-      enable = true,
-    },
-    highlight = {
-      enable = true,
-    },
-    playground = {
-      enable = true,
-      disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-      persist_queries = false, -- Whether the query persists across vim sessions
-      keybindings = {
-        toggle_query_editor = "o",
-        toggle_hl_groups = "i",
-        toggle_injected_languages = "t",
-        toggle_anonymous_nodes = "a",
-        toggle_language_display = "I",
-        focus_language = "f",
-        unfocus_language = "F",
-        update = "R",
-        goto_node = "<cr>",
-        show_help = "?",
+        if vim.treesitter.language.get_lang(vim.bo[event.buf].filetype) then
+          vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end,
+    })
+
+    vim.keymap.set("n", "<leader>tp", "<cmd>InspectTree<cr>", {
+      desc = "[TS]: Inspect syntax tree",
+    })
+    vim.keymap.set("n", "<leader>tuc", "<cmd>Inspect<cr>", {
+      desc = "[TS]: Inspect node under cursor",
+    })
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "TSUpdate",
+      callback = function()
+        require("nvim-treesitter.parsers").blade = {
+          install_info = {
+            url = "https://github.com/EmranMR/tree-sitter-blade",
+            files = { "src/parser.c" },
+            branch = "main",
+          },
+        }
+      end,
+    })
+
+    vim.filetype.add {
+      pattern = {
+        [".*%.blade%.php"] = "blade",
       },
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<leader>tss", -- set to `false` to disable one of the mappings
-        node_incremental = "<leader>tni",
-        scope_incremental = "<leader>tsi",
-        node_decremental = "<leader>tnd",
-      },
-    },
-  }
-
-  local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-  parser_config.blade = {
-    install_info = {
-      url = "https://github.com/EmranMR/tree-sitter-blade",
-      files = { "src/parser.c" },
-      branch = "main",
-    },
-    filetype = "blade",
-  }
-
-  vim.filetype.add {
-    pattern = {
-      [".*%.blade%.php"] = "blade",
-    },
-  }
-end
-
-return M
+    }
+  end,
+}

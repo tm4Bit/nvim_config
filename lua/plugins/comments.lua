@@ -11,6 +11,14 @@ M.config = function()
   if not status_ok then
     return
   end
+
+  -- Comment.nvim calculates the contextual commentstring in its pre_hook.
+  -- Disable the plugin's legacy CursorHold autocmd, which can run in buffers
+  -- without an active parser on Nvim 0.12.
+  require("ts_context_commentstring").setup {
+    enable_autocmd = false,
+  }
+
   local map = require("utils.map").map
 
   comment.setup {
@@ -53,13 +61,11 @@ M.config = function()
     },
 
     pre_hook = function(ctx)
+      local U = require "Comment.utils"
+      local type = ctx.ctype == U.ctype.linewise and "__default" or "__multiline"
+
       -- Only calculate commentstring for tsx filetypes
       if vim.bo.filetype == "typescriptreact" then
-        local U = require "Comment.utils"
-
-        -- Determine whether to use linewise or blockwise commentstring
-        local type = ctx.ctype == U.ctype.linewise and "__default" or "__multiline"
-
         -- Determine the location where to calculate commentstring from
         local location = nil
         if ctx.ctype == U.ctype.blockwise then
@@ -68,11 +74,20 @@ M.config = function()
           location = require("ts_context_commentstring.utils").get_visual_start_location()
         end
 
-        return require("ts_context_commentstring.internal").calculate_commentstring {
-          key = type,
-          location = location,
-        }
+        local ok, commentstring = pcall(
+          require("ts_context_commentstring.internal").calculate_commentstring,
+          { key = type, location = location }
+        )
+
+        if ok and commentstring then
+          return commentstring
+        end
       end
+
+      -- Comment.nvim's bundled Treesitter detection assumes get_parser()
+      -- always returns a tree, which is no longer true on Nvim 0.12. The
+      -- native option is correct for regular filetypes (tmux uses "# %s").
+      return vim.bo.commentstring ~= "" and vim.bo.commentstring or nil
     end,
   }
 

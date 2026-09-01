@@ -33,6 +33,14 @@ return {
     local lsp_servers_config = servers_module.get_lsp_configs()
     local server_names_for_mason = servers_module.get_all_server_names()
 
+    -- Mason builds gopls with the Go toolchain. Avoid retrying forever when
+    -- Go itself is not installed.
+    if vim.fn.executable "go" == 0 then
+      server_names_for_mason = vim.tbl_filter(function(server_name)
+        return server_name ~= "gopls"
+      end, server_names_for_mason)
+    end
+
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
