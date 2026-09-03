@@ -26,27 +26,10 @@
       @@%*@                .@***#@@           ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
         @@@                  %@@@             ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
           +                   =               ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-NVIM v0.11.3
-Build type: Release
-LuaJIT 2.1.1741730670
+NVIM v0.12.5
+Build type: RelWithDebInfo
+LuaJIT 2.1.1787165859
 --]]
-
--- VSCode-specific configuration
-if vim.g.vscode then
-  -- require "code.keymaps"
-  require "code.options"
-  local autocmd = vim.api.nvim_create_autocmd
-  local autogroup = vim.api.nvim_create_augroup
-  autocmd("TextYankPost", {
-    desc = "Configure highlight group and timeout for yank command",
-    group = autogroup("highlightyank", { clear = true }),
-    pattern = "*",
-    callback = function()
-      vim.highlight.on_yank { higroup = "IncSearch", timeout = 150 }
-    end,
-  })
-  return
-end
 
 -- Global variables
 vim.g.copilot_auto_trigger = false

@@ -53,7 +53,7 @@ local colorschemes = {
       terminalColors = true, -- define vim.g.terminal_color_{0,17}
       theme = "dragon", -- Load "wave" theme when 'background' option is not set
       background = { -- map the value of 'background' option to a theme
-        dark = "dragon", -- try "dragon" !
+        dark = "wave", -- try "dragon" | "wave"
         light = "lotus",
       },
     },
