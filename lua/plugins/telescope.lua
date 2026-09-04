@@ -26,7 +26,6 @@ local M = {
     { "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<cr>", desc = "[TELESCOPE]:List keymaps" },
     { "<leader>fm", "<cmd>lua require('telescope.builtin').man_pages()<cr>", desc = "[TELESCOPE]:Find man" },
     { "<leader>fo", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", desc = "[TELESCOPE]:Find old files" },
-    { "<leader>fr", "<cmd>lua require('telescope.builtin').registers()<cr>", desc = "[TELESCOPE]:Find registers" },
     {
       "<leader>f<CR>",
       "<cmd>lua require('telescope.builtin').resume()<cr>",
