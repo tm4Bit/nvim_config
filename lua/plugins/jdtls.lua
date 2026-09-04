@@ -6,8 +6,8 @@ local M = {
 M.opts = function()
   -- calculate workspace dir
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-  local workspace_dir = "/home/tma/.local/share/nvim/site/java/workspace-root/" .. project_name
-  os.execute("mkdir " .. workspace_dir)
+  local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
+  vim.fn.mkdir(workspace_dir, "p")
 
   local mason_path = vim.fn.stdpath "data" .. "/mason"
   local jdtls_launcher = vim.fn.glob(mason_path .. "/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
