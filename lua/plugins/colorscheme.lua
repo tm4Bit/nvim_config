@@ -6,7 +6,7 @@ local colorschemes = {
   {
     "catppuccin/nvim",
     lazy = false,
-    name = "catppuccin",
+    name = "catppuccin-macchiato",
     priority = 1000,
     opts = {
       no_italic = true,
@@ -59,6 +59,12 @@ local colorschemes = {
     },
   },
   {
+    "Nirmal314/van-gogh.nvim",
+    name = "van-gogh",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "rose-pine/neovim",
     lazy = false,
     name = "rose-pine",
@@ -79,7 +85,7 @@ local colorschemes = {
     priority = 1000,
     name = "tokyonight",
     opts = {
-      style = "night",
+      style = "storm",
     },
   },
   {
@@ -113,10 +119,11 @@ local colorschemes = {
   },
   {
     "olimorris/onedarkpro.nvim",
-    name = "onedarkpro",
+    name = "onedark",
     lazy = false,
     priority = 1000,
   },
+  { "tahayvr/vhs80.nvim", name = "vhs80", lazy = false, priority = 1000 },
   {
     "Mofiqul/vscode.nvim",
     name = "vscode",

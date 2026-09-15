@@ -1,5 +1,6 @@
 local M = {
   "ChmaraX/herdr-nvim",
+  lazy = false,
   opts = { keymaps = false },
   keys = {
     { "<leader>ac", "<cmd>Herdr comment<cr>", mode = { "n", "x" }, desc = "Comment for agent" },
